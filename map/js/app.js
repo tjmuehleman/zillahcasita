@@ -87,8 +87,52 @@
     return { open: false, label: `Closed — was open ${rangeText}`, cls: "closed" };
   }
 
+  // ---------- Events ----------
+  const TODAY_ISO = new Intl.DateTimeFormat("en-CA", { timeZone: TZ }).format(new Date());
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function isPastEvent(e) {
+    const end = e.endDate || e.date;
+    return !!end && end < TODAY_ISO;
+  }
+
+  // Events that haven't already happened (dateless events are always current)
+  function activeEvents(venue) {
+    return (venue.events || []).filter((e) => !isPastEvent(e));
+  }
+
   function eventsOnDay(venue, dayKey) {
-    return (venue.events || []).filter((e) => Array.isArray(e.days) && e.days.includes(dayKey));
+    return activeEvents(venue).filter((e) => Array.isArray(e.days) && e.days.includes(dayKey));
+  }
+
+  function fmtDatePart(iso) {
+    const [, m, d] = iso.split("-").map(Number);
+    return `${MONTHS[m - 1]} ${d}`;
+  }
+
+  function fmtEventDate(e) {
+    if (!e.date) return "";
+    if (e.endDate && e.endDate !== e.date) {
+      const sameMonth = e.date.slice(0, 7) === e.endDate.slice(0, 7);
+      const end = sameMonth ? e.endDate.split("-")[2].replace(/^0/, "") : fmtDatePart(e.endDate);
+      return `${fmtDatePart(e.date)}–${end}`;
+    }
+    return fmtDatePart(e.date);
+  }
+
+  // Shared event markup: linked name, date chip, schedule, description
+  function eventHtml(e, venue) {
+    const url = e.url || venue.website;
+    const dateChip = e.date ? `<span class="event-date">${fmtEventDate(e)}</span>` : "";
+    const name = url
+      ? `<a class="event-name" href="${url}" target="_blank" rel="noopener">${e.name}</a>`
+      : `<span class="event-name">${e.name}</span>`;
+    return (
+      `<div class="event-item">${name} ${dateChip}` +
+      (e.schedule ? `<div class="event-sched">${e.schedule}</div>` : "") +
+      (e.description ? `<div class="event-desc">${e.description}</div>` : "") +
+      `</div>`
+    );
   }
 
   // ---------- Map ----------
@@ -126,7 +170,7 @@
   function passesFilters(venue, filter, status) {
     if (!state.types.has(venue.type)) return false;
     if (state.openOnly && !status.open) return false;
-    if (state.eventsOnly && (venue.events || []).length === 0) return false;
+    if (state.eventsOnly && activeEvents(venue).length === 0) return false;
     if (state.search) {
       const q = state.search.toLowerCase();
       if (!venue.name.toLowerCase().includes(q) && !(venue.city || "").toLowerCase().includes(q)) return false;
@@ -225,17 +269,10 @@
       })
       .join("");
 
-    const eventsHtml = (venue.events || []).length
+    const evts = activeEvents(venue);
+    const eventsHtml = evts.length
       ? `<div class="detail-section-title">Events &amp; happenings</div>` +
-        venue.events
-          .map(
-            (e) =>
-              `<div class="event-item"><span class="event-name">${e.name}</span>` +
-              (e.schedule ? `<div class="event-sched">${e.schedule}</div>` : "") +
-              (e.description ? `<div class="event-desc">${e.description}</div>` : "") +
-              `</div>`
-          )
-          .join("")
+        evts.map((e) => eventHtml(e, venue)).join("")
       : "";
 
     const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(venue.address)}`;
@@ -320,7 +357,7 @@
     content.innerHTML = "";
     for (const type of ["winery", "brewery", "cidery"]) {
       const withEvents = VENUES
-        .filter((v) => v.type === type && (v.events || []).length > 0)
+        .filter((v) => v.type === type && activeEvents(v).length > 0)
         .sort((a, b) => a.name.localeCompare(b.name));
       if (!withEvents.length) continue;
 
@@ -340,18 +377,14 @@
           selectVenue(venue);
         });
         block.appendChild(nameBtn);
+        const sorted = activeEvents(venue).slice().sort((a, b) => {
+          if (!!a.date !== !!b.date) return a.date ? -1 : 1; // dated events first
+          return (a.date || "").localeCompare(b.date || "");
+        });
         block.insertAdjacentHTML(
           "beforeend",
           ` <span class="events-venue-city">· ${venue.city}</span>` +
-            venue.events
-              .map(
-                (e) =>
-                  `<div class="event-item"><span class="event-name">${e.name}</span>` +
-                  (e.schedule ? `<div class="event-sched">${e.schedule}</div>` : "") +
-                  (e.description ? `<div class="event-desc">${e.description}</div>` : "") +
-                  `</div>`
-              )
-              .join("")
+            sorted.map((e) => eventHtml(e, venue)).join("")
         );
         content.appendChild(block);
       }
@@ -379,6 +412,12 @@
 
   // ---------- Init ----------
   buildTimeOptions();
+
+  if (typeof DATA_UPDATED !== "undefined") {
+    const stamp = `Last updated ${fmtDatePart(DATA_UPDATED)}, ${DATA_UPDATED.slice(0, 4)}.`;
+    document.getElementById("data-updated").textContent = stamp;
+    document.getElementById("events-updated").textContent = stamp;
+  }
 
   // Reset controls to defaults — some browsers restore form state across reloads,
   // which would silently desync the UI from `state`.

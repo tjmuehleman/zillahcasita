@@ -264,7 +264,25 @@ input[type="search"]:focus, select:focus { outline: 2px solid var(--sage); outli
   font-weight: 600;
 }
 .event-item { margin-bottom: 0.5rem; font-size: 0.85rem; }
-.event-item .event-name { font-weight: 600; }
+.event-item .event-name { font-weight: 600; color: var(--ink); }
+a.event-name {
+  text-decoration: underline;
+  text-decoration-color: var(--sage);
+  text-underline-offset: 2px;
+}
+a.event-name:hover { color: var(--sage-dark); }
+.event-date {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--beer) 16%, white);
+  color: #8a5f1d;
+  border-radius: 6px;
+  padding: 0.08rem 0.4rem;
+  margin-left: 0.2rem;
+  vertical-align: 1px;
+}
+.data-updated { color: var(--ink-soft); }
 .event-item .event-sched { color: var(--sage-dark); font-size: 0.8rem; }
 .event-item .event-desc { color: var(--ink-soft); font-size: 0.8rem; }
 .detail-notes { font-size: 0.8rem; color: var(--ink-soft); font-style: italic; }

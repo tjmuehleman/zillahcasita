@@ -73,14 +73,15 @@
     <div class="events-panel" role="dialog" aria-modal="true" aria-label="All upcoming events">
       <button class="close-btn" id="events-close" aria-label="Close">✕</button>
       <h2>Upcoming events</h2>
-      <p class="events-intro">Everything happening at Yakima County wineries, breweries &amp; cideries. Click a venue to see it on the map.</p>
+      <p class="events-intro">Everything happening at Yakima County wineries, breweries &amp; cideries. Click a venue to see it on the map, or an event name for details. <span id="events-updated"></span></p>
       <div id="events-content"></div>
     </div>
   </div>
 
   <footer class="site-footer">
     <p>A companion guide from <a href="https://www.zillahcasita.com">La Casita de Zillah</a>, your home base in Washington wine country.
-    Hours and events change — always confirm with the venue before making the drive.</p>
+    Hours and events change — always confirm with the venue before making the drive.
+    <span class="data-updated" id="data-updated"></span></p>
   </footer>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"

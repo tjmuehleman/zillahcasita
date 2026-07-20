@@ -1,7 +1,10 @@
 // Venue data for the Yakima County tasting map.
-// Generated from research compiled July 2026 - verify hours with venues before visiting.
 // hours: mon-sun, each null (closed) or a list of [open, close] pairs in 24h "HH:MM".
-// events[].days: weekdays a recurring event falls on (empty = annual/occasional).
+// events[]: {name, schedule, description, days, url?, date?, endDate?} — days lists
+// weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
+// Past-dated events are hidden at runtime and should be pruned from this file.
+
+const DATA_UPDATED = "2026-07-20";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -130,13 +133,15 @@ const VENUES = [
           "fri",
           "sat",
           "sun"
-        ]
+        ],
+        "url": "https://balebreaker.com/taproom/yakima/"
       },
       {
         "name": "Trivia Night",
         "schedule": "Monthly",
         "description": "Taproom trivia night.",
-        "days": []
+        "days": [],
+        "url": "https://balebreaker.com/taproom/yakima/"
       }
     ],
     "city": "Yakima"
@@ -252,7 +257,8 @@ const VENUES = [
         "name": "Seasonal special events / live music",
         "schedule": "Periodic (e.g., summer luau with live music)",
         "description": "Occasional themed events and live music throughout the year.",
-        "days": []
+        "days": [],
+        "url": "https://www.cowichecreekbrewing.com/"
       }
     ],
     "city": "Cowiche"
@@ -308,7 +314,8 @@ const VENUES = [
         "description": "Weekly trivia.",
         "days": [
           "thu"
-        ]
+        ],
+        "url": "https://oakcreekbrewstillery.com/"
       },
       {
         "name": "Weekend Brunch",
@@ -317,7 +324,8 @@ const VENUES = [
         "days": [
           "sat",
           "sun"
-        ]
+        ],
+        "url": "https://oakcreekbrewstillery.com/"
       }
     ],
     "city": "Naches"
@@ -423,7 +431,8 @@ const VENUES = [
         "name": "Rotating food vendors",
         "schedule": "Varies; posted weekly on social media",
         "description": "Rotating food trucks/vendors at the taproom.",
-        "days": []
+        "days": [],
+        "url": "https://shortheadbrewing.com/"
       }
     ],
     "city": "Tieton"
@@ -484,7 +493,8 @@ const VENUES = [
         "description": "Team trivia, up to 6 per team.",
         "days": [
           "wed"
-        ]
+        ],
+        "url": "https://singlehillbrewing.com/taproom/"
       },
       {
         "name": "Bingo",
@@ -492,7 +502,8 @@ const VENUES = [
         "description": "Family-friendly bingo night.",
         "days": [
           "tue"
-        ]
+        ],
+        "url": "https://singlehillbrewing.com/taproom/"
       },
       {
         "name": "Live music / DJ sets",
@@ -501,7 +512,8 @@ const VENUES = [
         "days": [
           "fri",
           "sat"
-        ]
+        ],
+        "url": "https://singlehillbrewing.com/taproom/"
       }
     ],
     "city": "Yakima"
@@ -557,7 +569,8 @@ const VENUES = [
         "description": "Weekly karaoke.",
         "days": [
           "fri"
-        ]
+        ],
+        "url": "https://outskirtsbrewingco.com/"
       },
       {
         "name": "Concert series",
@@ -567,7 +580,8 @@ const VENUES = [
           "thu",
           "fri",
           "sat"
-        ]
+        ],
+        "url": "https://outskirtsbrewingco.com/"
       }
     ],
     "city": "Selah"
@@ -691,7 +705,8 @@ const VENUES = [
           "fri",
           "sat",
           "sun"
-        ]
+        ],
+        "url": "https://www.varietalbeer.com/taproom"
       }
     ],
     "city": "Sunnyside"
@@ -812,13 +827,15 @@ const VENUES = [
           "sat",
           "sun"
         ],
-        "description": "Outdoor concerts on the cidery's apple-bin stage."
+        "description": "Outdoor concerts on the cidery's apple-bin stage.",
+        "url": "https://tietonciderworks.com/tasting-room-hours-and-events/"
       },
       {
         "name": "Release parties & bocce tournaments",
         "schedule": "Periodic; see Facebook",
         "days": [],
-        "description": "Specialty cider release tastings, painting-and-cider nights, apple pie baking contest, bocce tournaments."
+        "description": "Specialty cider release tastings, painting-and-cider nights, apple pie baking contest, bocce tournaments.",
+        "url": "https://tietonciderworks.com/tasting-room-hours-and-events/"
       }
     ],
     "city": "Yakima"
@@ -874,7 +891,8 @@ const VENUES = [
         "days": [
           "fri"
         ],
-        "description": "Local musicians in the tasting room every Friday night."
+        "description": "Local musicians in the tasting room every Friday night.",
+        "url": "https://antolincellars.com/"
       },
       {
         "name": "Paint Nite",
@@ -883,7 +901,8 @@ const VENUES = [
           "thu",
           "sat"
         ],
-        "description": "Guided painting sessions with wine."
+        "description": "Guided painting sessions with wine.",
+        "url": "https://antolincellars.com/"
       }
     ],
     "city": "Yakima"
@@ -1008,25 +1027,33 @@ const VENUES = [
         "days": [
           "sun"
         ],
-        "description": "Vinyl records spun in the tasting room with happy hour specials; bring your own record."
+        "description": "Vinyl records spun in the tasting room with happy hour specials; bring your own record.",
+        "url": "https://www.bosmawine.com/events"
       },
       {
         "name": "Live music on the estate lawn",
         "schedule": "Occasional summer evenings",
         "description": "Acoustic concerts at sunset.",
-        "days": []
+        "days": [],
+        "url": "https://www.bosmawine.com/events"
       },
       {
         "name": "Catch the Crush Weekend",
-        "schedule": "Second weekend of October",
+        "schedule": "Oct 9-11, 2026",
         "description": "Harvest-season activities with estate-grown wines.",
-        "days": []
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-10-09",
+        "endDate": "2026-10-11"
       },
       {
         "name": "Hallowine",
-        "schedule": "Late October annually",
+        "schedule": "Late October 2026",
         "description": "Adult trick-or-treating week with costume perks.",
-        "days": []
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-10-24",
+        "endDate": "2026-10-31"
       }
     ],
     "city": "Outlook"
@@ -1228,13 +1255,15 @@ const VENUES = [
         "name": "Wines in the Vines",
         "schedule": "Seasonal (tickets on sale April)",
         "description": "Guided vineyard tour with tastings.",
-        "days": []
+        "days": [],
+        "url": "https://dineenvineyards.com/pages/our-events"
       },
       {
         "name": "Harvest Experience",
-        "schedule": "Fall, annually",
+        "schedule": "Fall 2026 (tickets on sale March)",
         "description": "Full-day picking and fermentation experience; also vineyard dinners and Adopt-a-Vine program.",
-        "days": []
+        "days": [],
+        "url": "https://dineenvineyards.com/pages/our-events"
       }
     ],
     "city": "Zillah"
@@ -1283,13 +1312,15 @@ const VENUES = [
         "name": "Vino & Vinyl",
         "schedule": "Periodic evenings; see calendar",
         "days": [],
-        "description": "Record-spinning wine nights at the event center."
+        "description": "Record-spinning wine nights at the event center.",
+        "url": "https://www.doodlevineswinery.com/"
       },
       {
         "name": "Live music & private events",
         "schedule": "Seasonal; see website/Facebook",
         "days": [],
-        "description": "Weddings, live music, and community events at the event center."
+        "description": "Weddings, live music, and community events at the event center.",
+        "url": "https://www.doodlevineswinery.com/"
       }
     ],
     "city": "Yakima"
@@ -1365,7 +1396,8 @@ const VENUES = [
         "name": "Signature wine weekends",
         "schedule": "Several times per year (Spring Barrel, Rose Revolution, Red Wine & Chocolate, Fete en Blanc)",
         "description": "Release parties and themed weekends, often with food trucks such as Mill Burn Smashburgers and Tacos Don Chayo.",
-        "days": []
+        "days": [],
+        "url": "https://www.fortuitycellars.com/our-events"
       }
     ],
     "city": "Wapato"
@@ -1427,27 +1459,36 @@ const VENUES = [
     "events": [
       {
         "name": "Food truck days",
-        "schedule": "Occasional summer dates",
+        "schedule": "Sat, Aug 1 (Lab Dogs Food Truck) + other summer dates",
         "description": "Visiting food trucks on the patio.",
-        "days": []
+        "days": [],
+        "url": "https://www.freehandcellars.com/",
+        "date": "2026-08-01"
       },
       {
         "name": "Moonlight Party",
-        "schedule": "Late July",
+        "schedule": "Fri, Jul 24, 2026",
         "description": "Evening party at the winery.",
-        "days": []
+        "days": [],
+        "url": "https://www.freehandcellars.com/",
+        "date": "2026-07-24"
       },
       {
         "name": "Goat Snuggles Day",
-        "schedule": "Early August",
+        "schedule": "Sat, Aug 8, 2026",
         "description": "Family-friendly animal event.",
-        "days": []
+        "days": [],
+        "url": "https://www.freehandcellars.com/",
+        "date": "2026-08-08"
       },
       {
         "name": "Club Share Weekend",
-        "schedule": "Early August annually",
+        "schedule": "Aug 7-9, 2026",
         "description": "Multi-winery wine club weekend.",
-        "days": []
+        "days": [],
+        "url": "https://www.freehandcellars.com/",
+        "date": "2026-08-07",
+        "endDate": "2026-08-09"
       }
     ],
     "city": "Wapato"
@@ -1531,11 +1572,14 @@ const VENUES = [
     "events": [
       {
         "name": "Music in the Vines concert series",
-        "schedule": "Select Friday evenings, June-August",
+        "schedule": "Friday evenings: Jul 24 & Aug 7, 2026",
         "days": [
           "fri"
         ],
-        "description": "Ticketed outdoor concerts at the winery amphitheater: indie rock, funk, blues rock, and Americana acts."
+        "description": "Ticketed outdoor concerts at the winery amphitheater: indie rock, funk, blues rock, and Americana acts.",
+        "url": "https://gilbertcellars.com/",
+        "date": "2026-07-24",
+        "endDate": "2026-08-07"
       },
       {
         "name": "Food vendors",
@@ -1545,7 +1589,8 @@ const VENUES = [
           "sat",
           "sun"
         ],
-        "description": "Rotating food vendors (tacos, burgers, etc.) on the winery grounds."
+        "description": "Rotating food vendors (tacos, burgers, etc.) on the winery grounds.",
+        "url": "https://gilbertcellars.com/"
       }
     ],
     "city": "Yakima"
@@ -1626,26 +1671,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Tuesday-Wednesday by appointment only. Large lawn and gazebo with Mt. Adams views; guided tastings indoors or on the lawn.",
-    "events": [
-      {
-        "name": "Spring Barrel Weekend",
-        "schedule": "Late April annually",
-        "description": "Barrel samples and exclusive cellar tastings.",
-        "days": []
-      },
-      {
-        "name": "Taste Rattlesnake Hills",
-        "schedule": "Mid-June annually",
-        "description": "Trail-wide weekend with food pairings, entertainment, and education.",
-        "days": []
-      },
-      {
-        "name": "Rose Revolution",
-        "schedule": "Late June annually",
-        "description": "Rose release weekend with live music.",
-        "days": []
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -1746,7 +1772,8 @@ const VENUES = [
         "days": [
           "fri"
         ],
-        "description": "Featured artists perform in the tasting room."
+        "description": "Featured artists perform in the tasting room.",
+        "url": "https://kanawinery.com/live-music"
       },
       {
         "name": "Open mic night",
@@ -1754,7 +1781,8 @@ const VENUES = [
         "days": [
           "fri"
         ],
-        "description": "Open mic for local musicians."
+        "description": "Open mic for local musicians.",
+        "url": "https://kanawinery.com/live-music"
       },
       {
         "name": "Saturday live bands",
@@ -1762,7 +1790,8 @@ const VENUES = [
         "days": [
           "sat"
         ],
-        "description": "Rotating local and touring bands; voted best nightlife/music venue in Yakima Valley reader polls."
+        "description": "Rotating local and touring bands; voted best nightlife/music venue in Yakima Valley reader polls.",
+        "url": "https://kanawinery.com/live-music"
       }
     ],
     "city": "Yakima"
@@ -1821,26 +1850,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Open 11-5 daily mid-February through November; December to mid-February by appointment only. Hilltop wedding/event venue.",
-    "events": [
-      {
-        "name": "Spring Barrel Tasting",
-        "schedule": "Late April annually",
-        "description": "Barrel tasting weekend, 11am-5pm.",
-        "days": []
-      },
-      {
-        "name": "Taste Rattlesnake Hills",
-        "schedule": "Mid-June annually",
-        "description": "Trail-wide tasting weekend.",
-        "days": []
-      },
-      {
-        "name": "Rose Revolution",
-        "schedule": "Late June annually",
-        "description": "Valley-wide rose celebration weekend.",
-        "days": []
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -1946,14 +1956,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Seasonal: open Valentine's weekend through Thanksgiving, Thu-Mon; complimentary tastings. Historic 1905 Angel Farmstead at Parker Heights. Contact by phone/email (its Facebook page was compromised).",
-    "events": [
-      {
-        "name": "Red Wine & Chocolate",
-        "schedule": "Valentine's/Presidents' weekend annually",
-        "description": "Wine with Belgian chocolate brownie pairings.",
-        "days": []
-      }
-    ],
+    "events": [],
     "city": "Wapato"
   },
   {
@@ -2089,14 +2092,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Open daily 11-6; no tasting fees. Organic, zero-pesticide vineyard; quirky, family-friendly tasting with food pairings.",
-    "events": [
-      {
-        "name": "Taste Rattlesnake Hills",
-        "schedule": "Mid-June annually",
-        "description": "Trail-wide sip/savor/celebrate weekend.",
-        "days": []
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -2404,13 +2400,15 @@ const VENUES = [
         "days": [
           "sun"
         ],
-        "description": "House-made brunch buffet with sparkling wine."
+        "description": "House-made brunch buffet with sparkling wine.",
+        "url": "https://www.trevericellars.com/events/"
       },
       {
         "name": "Live music and trivia nights",
         "schedule": "Periodic; see events calendar",
         "description": "Evening entertainment at the tasting room.",
-        "days": []
+        "days": [],
+        "url": "https://www.trevericellars.com/events/"
       }
     ],
     "city": "Wapato"
@@ -2471,28 +2469,13 @@ const VENUES = [
     "notes": "Second-generation family winery, open daily year-round; casual patio and lawn.",
     "events": [
       {
-        "name": "Rose Release Weekend",
-        "schedule": "Memorial Day weekend annually",
-        "description": "New-vintage rose release with tacos and live music.",
-        "days": []
-      },
-      {
-        "name": "Spring Barrel Weekend",
-        "schedule": "Late April annually",
-        "description": "Barrel tastings, new releases, and food trucks.",
-        "days": []
-      },
-      {
         "name": "Harvest Games + Crush Pad Party",
-        "schedule": "October annually",
+        "schedule": "October 2026",
         "description": "Winemaker competitions, grape stomping, and a dance party on the crush pad.",
-        "days": []
-      },
-      {
-        "name": "Red Wine & Chocolate Weekend",
-        "schedule": "Mid-February annually",
-        "description": "Port-style wine and chocolate pairings.",
-        "days": []
+        "days": [],
+        "url": "https://www.twomountainwinery.com/events",
+        "date": "2026-10-01",
+        "endDate": "2026-10-31"
       }
     ],
     "city": "Zillah"
@@ -2558,13 +2541,18 @@ const VENUES = [
         "days": [
           "fri"
         ],
-        "description": "Live bands on the lawn with food and wine; season passes available."
+        "description": "Live bands on the lawn with food and wine; season passes available.",
+        "url": "https://vanarnamvineyards.com/events",
+        "endDate": "2026-09-11"
       },
       {
         "name": "Catch the Crush",
-        "schedule": "Second weekend of October annually",
+        "schedule": "Oct 9-11, 2026",
         "description": "Grape stomps, vineyard tours, harvest parties, live music, and food trucks.",
-        "days": []
+        "days": [],
+        "url": "https://vanarnamvineyards.com/events",
+        "date": "2026-10-09",
+        "endDate": "2026-10-11"
       }
     ],
     "city": "Zillah"
