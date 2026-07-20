@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spend &amp; Sample — Zillah House Expenses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:        #e9e5db;
+    --panel:     #fdfbf6;
+    --panel-2:   #f4f1e8;
+    --ink:       #211f1a;
+    --muted:     #6f6b61;
+    --faint:     #97917f;
+    --line:      #d9d3c5;
+    --line-soft: #e6e0d2;
+    --wine:      #7a2e3f;
+    --amber:     #bd7f2b;
+    --olive:     #7c8a44;
+    --green:     #2f7d4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+  }
+  .wrap { max-width: 1500px; margin: 0 auto; padding: 22px 26px 30px; }
+
+  /* Header */
+  .kicker { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+  h1.title { font-size: 30px; font-weight: 800; letter-spacing: -.02em; margin-top: 4px; }
+  h1.title span { font-weight: 500; color: var(--muted); font-size: 20px; letter-spacing: 0; }
+  .lede { color: var(--muted); font-size: 14px; margin-top: 6px; max-width: 640px; }
+
+  /* Upload */
+  .uploader {
+    margin: 22px 0 4px; border: 1.5px dashed #c3bca9; background: var(--panel);
+    border-radius: 12px; padding: 40px 24px; text-align: center; cursor: pointer; transition: .16s ease;
+  }
+  .uploader:hover, .uploader.drag { border-color: var(--wine); background: #fff; }
+  .uploader h3 { font-size: 19px; font-weight: 700; }
+  .uploader p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .uploader .btn { display:inline-block; margin-top: 14px; background: var(--ink); color: #f5f2ea; padding: 9px 20px; border-radius: 8px; font-weight: 600; font-size: 13px; }
+  .uploader .sample { color: var(--wine); text-decoration: underline; cursor: pointer; }
+  input[type=file] { display: none; }
+
+  /* Toolbar */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin: 20px 0 16px; }
+  .seg { display: inline-flex; background: var(--panel); border: 1px solid var(--line); border-radius: 9px; padding: 3px; gap: 2px; }
+  .seg button { font: inherit; font-size: 13px; font-weight: 500; border: 0; background: transparent; color: var(--muted); padding: 6px 11px; border-radius: 7px; cursor: pointer; white-space: nowrap; }
+  .seg button:hover { color: var(--ink); }
+  .seg button.on { background: var(--ink); color: #f5f2ea; font-weight: 600; }
+  .legend { display: inline-flex; gap: 3px; background: var(--panel); border: 1px solid var(--line); border-radius: 9px; padding: 3px; flex-wrap: wrap; }
+  .legend .lg { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; color: var(--ink); padding: 6px 10px; border-radius: 7px; cursor: pointer; user-select: none; }
+  .legend .lg .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .legend .lg.off { color: var(--faint); }
+  .legend .lg.off .dot { opacity: .28; }
+  .legend .lg:hover { background: var(--panel-2); }
+  .check { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 9px; padding: 7px 12px; cursor: pointer; }
+  .check input { accent-color: var(--wine); }
+  .rate { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--muted); background: var(--panel); border: 1px solid var(--line); border-radius: 9px; padding: 5px 12px; }
+  .rate input { width: 58px; font: inherit; font-size: 13px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: right; }
+  .rate input:focus { outline: none; border-color: var(--wine); }
+  .search { margin-left: auto; flex: 1; min-width: 200px; max-width: 340px; border: 1px solid var(--line); background: var(--panel); border-radius: 9px; padding: 9px 14px; font: inherit; font-size: 13px; }
+  .search:focus { outline: none; border-color: var(--wine); }
+  .ghost { font: inherit; font-size: 13px; font-weight: 600; color: var(--wine); background: transparent; border: 1px solid var(--line); border-radius: 9px; padding: 8px 14px; cursor: pointer; }
+  .ghost:hover { border-color: var(--wine); }
+
+  /* Body layout */
+  .body { display: grid; grid-template-columns: minmax(0,1fr) 380px; gap: 18px; align-items: start; }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+  .kpi { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .kpi .lab { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--faint); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .kpi .lab .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .kpi .val { font-size: 27px; font-weight: 800; letter-spacing: -.02em; margin-top: 5px; }
+  .kpi .sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
+  .card h2 { font-size: 15px; font-weight: 700; }
+  .card .cap { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .chart-wrap { position: relative; height: 260px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .two .card { margin-bottom: 0; }
+
+  /* Right list */
+  .side { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; position: sticky; top: 16px; }
+  .side .head { padding: 13px 16px; border-bottom: 1px solid var(--line-soft); }
+  .side .head .count { font-size: 13px; font-weight: 600; }
+  .side .head .count b { color: var(--wine); }
+  .side .head .sortrow { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .side .head select { font: inherit; font-size: 12px; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 7px; padding: 4px 8px; }
+  .list { max-height: calc(100vh - 130px); overflow-y: auto; }
+  .row { display: flex; gap: 12px; padding: 13px 16px; border-bottom: 1px solid var(--line-soft); }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--panel-2); }
+  .row .accent { width: 3px; border-radius: 2px; flex: none; align-self: stretch; }
+  .row .main { min-width: 0; flex: 1; }
+  .row .name { font-size: 13.5px; font-weight: 700; line-height: 1.3; }
+  .row .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .row .status { font-size: 12px; margin-top: 3px; font-weight: 600; }
+  .row .status.ded { color: var(--green); }
+  .row .status.non { color: var(--faint); }
+  .row .right { text-align: right; flex: none; }
+  .row .amt { font-size: 14px; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
+  .row .mi { font-size: 11px; color: var(--faint); margin-top: 2px; white-space: nowrap; }
+
+  #dashboard { display: none; }
+  .hidden { display: none !important; }
+  .foot { text-align: center; color: var(--faint); font-size: 12px; padding: 22px 0 4px; }
+  .foot a { color: var(--wine); }
+
+  ::-webkit-scrollbar { width: 9px; }
+  ::-webkit-scrollbar-thumb { background: #cfc8b8; border-radius: 9px; }
+
+  @media (max-width: 1080px) {
+    .body { grid-template-columns: 1fr; }
+    .side { position: static; }
+    .list { max-height: 460px; }
+  }
+  @media (max-width: 720px) {
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .two { grid-template-columns: 1fr; }
+    .search { margin-left: 0; max-width: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">La Casita de Zillah</div>
+  <h1 class="title">Spend &amp; Sample <span>— the Zillah House expense ledger</span></h1>
+  <p class="lede">Every dollar in and out of the casita. Filter by month or category to see where the money goes — and what's deductible.</p>
+
+  <!-- Upload -->
+  <div id="uploadZone" class="uploader">
+    <h3>Drop your expenses CSV here</h3>
+    <p>or click to browse &middot; everything runs in your browser, nothing is uploaded anywhere</p>
+    <span class="btn">Choose CSV file</span>
+    <p style="margin-top:14px;">Just looking? <span class="sample" id="loadSample">Load the sample dataset</span></p>
+    <input type="file" id="fileInput" accept=".csv,text/csv" />
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard">
+    <div class="toolbar">
+      <div class="seg" id="monthSeg"></div>
+      <div class="legend" id="legend"></div>
+      <label class="check"><input type="checkbox" id="deductOnly" /> Deductible only</label>
+      <label class="rate">IRS $/mi <input type="number" id="mileRate" value="0.70" step="0.01" min="0" /></label>
+      <input class="search" id="search" placeholder="Search by name, vendor or note…" />
+      <button class="ghost" id="resetBtn">New file</button>
+    </div>
+
+    <div class="body">
+      <div class="col-main">
+        <div class="kpis">
+          <div class="kpi"><div class="lab"><span class="dot" style="background:var(--wine)"></span>Total spend</div><div class="val" id="kTotal">$0</div><div class="sub" id="kTotalNote">0 transactions</div></div>
+          <div class="kpi"><div class="lab"><span class="dot" style="background:var(--green)"></span>Tax deductible</div><div class="val" id="kDeduct">$0</div><div class="sub" id="kDeductNote">—</div></div>
+          <div class="kpi"><div class="lab"><span class="dot" style="background:var(--amber)"></span>Mileage value</div><div class="val" id="kMile">$0</div><div class="sub" id="kMileNote">—</div></div>
+          <div class="kpi"><div class="lab"><span class="dot" style="background:var(--olive)"></span>Avg / transaction</div><div class="val" id="kAvg">$0</div><div class="sub">across selection</div></div>
+        </div>
+
+        <div class="two" style="margin-bottom:16px;">
+          <div class="card">
+            <h2>Spend by category</h2>
+            <div class="cap">Where the money goes</div>
+            <div class="chart-wrap"><canvas id="catChart"></canvas></div>
+          </div>
+          <div class="card">
+            <h2>Spend by month</h2>
+            <div class="cap">Monthly cash outflow</div>
+            <div class="chart-wrap"><canvas id="monthChart"></canvas></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Top vendors</h2>
+          <div class="cap">Biggest recipients of your spend</div>
+          <div class="chart-wrap" style="height:300px;"><canvas id="vendorChart"></canvas></div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="head">
+          <div class="count" id="listCount">—</div>
+          <div class="sortrow">
+            <span style="font-size:12px;color:var(--muted)">Sort</span>
+            <select id="sortSel">
+              <option value="date">Newest first</option>
+              <option value="amount">Largest amount</option>
+              <option value="name">Name (A–Z)</option>
+            </select>
+          </div>
+        </div>
+        <div class="list" id="txList"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    Built for <a href="https://www.zillahcasita.com" target="_blank" rel="noopener">zillahcasita.com</a> &middot; Runs entirely in your browser &middot; Refresh to start over.
+  </div>
+</div>
+
+<script>
+/* ---------- CSV parser (quoted fields, embedded commas & quotes) ---------- */
+function parseCSV(text) {
+  const rows = []; let row = [], field = '', i = 0, inQ = false;
+  text = text.replace(/\r\n/g,'\n').replace(/\r/g,'\n');
+  while (i < text.length) {
+    const c = text[i];
+    if (inQ) { if (c === '"') { if (text[i+1] === '"') { field+='"'; i+=2; continue; } inQ=false; i++; continue; } field+=c; i++; continue; }
+    if (c === '"') { inQ=true; i++; continue; }
+    if (c === ',') { row.push(field); field=''; i++; continue; }
+    if (c === '\n') { row.push(field); rows.push(row); row=[]; field=''; i++; continue; }
+    field+=c; i++;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.some(c => c.trim() !== ''));
+}
+
+/* ---------- helpers ---------- */
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const PALETTE = ['#7a2e3f','#bd7f2b','#7c8a44','#5b6b41','#b5603f','#9a6b7a','#c9a94f','#6d8a7a','#a8536a','#4f6a6a','#8a9a4a','#c98a3e'];
+const fmt  = n => '$' + Math.round(n).toLocaleString('en-US');
+const fmt2 = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+function parseAmount(s){ if(s==null) return 0; const n=parseFloat(String(s).replace(/[^0-9.\-]/g,'')); return isNaN(n)?0:n; }
+function parseFirstDate(s){ if(!s) return null; const first=String(s).split(/→|–|—|->/)[0].trim(); const d=new Date(first); return isNaN(d)?null:d; }
+function findCol(headers, names){
+  const lower = headers.map(h => h.trim().toLowerCase());
+  for (const n of names){ const i=lower.indexOf(n); if(i!==-1) return i; }
+  for (const n of names){ const i=lower.findIndex(h=>h.includes(n)); if(i!==-1) return i; }
+  return -1;
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+/* ---------- state ---------- */
+let RAW = [], CATS = [], CAT_COLOR = {}, charts = {};
+let selMonth = 'all', activeCats = new Set(), deductOnly = false;
+
+function ingest(rows){
+  const h = rows[0];
+  const c = {
+    expense:   findCol(h,['expense','item','description','name']),
+    amount:    findCol(h,['amount','cost','price','total']),
+    category:  findCol(h,['category','type']),
+    date:      findCol(h,['date']),
+    mileage:   findCol(h,['mileage','miles']),
+    notes:     findCol(h,['notes','note','memo']),
+    deductible:findCol(h,['tax deductible','deductible','tax']),
+    vendor:    findCol(h,['vendor','merchant','payee','store']),
+  };
+  RAW = rows.slice(1).map(r => {
+    const g = i => (i>=0 && i<r.length) ? r[i].trim() : '';
+    const d = parseFirstDate(g(c.date));
+    return {
+      expense: g(c.expense) || '(unnamed)',
+      amount: parseAmount(g(c.amount)),
+      category: g(c.category) || 'Uncategorized',
+      date: d,
+      monthKey: d ? d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0') : 'Unknown',
+      monthLabel: d ? MONTHS[d.getMonth()]+' '+d.getFullYear() : 'Undated',
+      mileage: parseAmount(g(c.mileage)),
+      notes: g(c.notes),
+      deductible: /^y/i.test(g(c.deductible)),
+      vendor: g(c.vendor) || '',
+    };
+  });
+  CATS = [...new Set(RAW.map(r=>r.category))].sort();
+  CAT_COLOR = {}; CATS.forEach((cat,i)=> CAT_COLOR[cat] = PALETTE[i % PALETTE.length]);
+  activeCats = new Set(CATS);
+}
+
+/* ---------- filters ---------- */
+function baseFiltered(){
+  return RAW.filter(r =>
+    (selMonth==='all' || r.monthKey===selMonth) &&
+    activeCats.has(r.category) &&
+    (!deductOnly || r.deductible)
+  );
+}
+
+function buildControls(){
+  const months = [...new Set(RAW.map(r=>r.monthKey))].filter(m=>m!=='Unknown').sort();
+  const seg = document.getElementById('monthSeg');
+  seg.innerHTML = `<button data-m="all" class="on">All</button>` +
+    months.map(m => { const rec = RAW.find(r=>r.monthKey===m); return `<button data-m="${m}">${MONTHS[parseInt(m.slice(5))-1]}</button>`; }).join('');
+  seg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    selMonth = b.dataset.m;
+    seg.querySelectorAll('button').forEach(x=>x.classList.toggle('on', x===b));
+    render();
+  }));
+
+  const lg = document.getElementById('legend');
+  lg.innerHTML = CATS.map(cat =>
+    `<span class="lg" data-c="${esc(cat)}"><span class="dot" style="background:${CAT_COLOR[cat]}"></span>${esc(cat)}</span>`).join('');
+  lg.querySelectorAll('.lg').forEach(el => el.addEventListener('click', () => {
+    const cat = el.dataset.c;
+    if (activeCats.has(cat)) activeCats.delete(cat); else activeCats.add(cat);
+    if (activeCats.size === 0) activeCats = new Set(CATS); // never empty
+    el.classList.toggle('off', !activeCats.has(cat));
+    render();
+  }));
+}
+
+/* ---------- render ---------- */
+function render(){
+  const data = baseFiltered();
+  const rate = parseFloat(document.getElementById('mileRate').value) || 0;
+  const total = data.reduce((s,r)=>s+r.amount,0);
+  const deduct = data.filter(r=>r.deductible).reduce((s,r)=>s+r.amount,0);
+  const miles = data.reduce((s,r)=>s+r.mileage,0);
+  const n = data.length;
+
+  document.getElementById('kTotal').textContent = fmt(total);
+  document.getElementById('kTotalNote').textContent = n + ' transaction' + (n===1?'':'s');
+  document.getElementById('kDeduct').textContent = fmt(deduct);
+  document.getElementById('kDeductNote').textContent = (total?Math.round(deduct/total*100):0) + '% of cash spend';
+  document.getElementById('kMile').textContent = fmt(miles*rate);
+  document.getElementById('kMileNote').textContent = miles.toLocaleString() + ' mi @ $' + rate.toFixed(2);
+  document.getElementById('kAvg').textContent = n ? fmt(total/n) : '$0';
+
+  const byCat = {}; data.forEach(r => byCat[r.category]=(byCat[r.category]||0)+r.amount);
+  const catE = Object.entries(byCat).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  const byMonth = {}; data.forEach(r=>{ if(r.monthKey!=='Unknown') byMonth[r.monthKey]=(byMonth[r.monthKey]||0)+r.amount; });
+  const mKeys = Object.keys(byMonth).sort();
+  const byVen = {}; data.forEach(r=>{ if(r.vendor) byVen[r.vendor]=(byVen[r.vendor]||0)+r.amount; });
+  const venE = Object.entries(byVen).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).slice(0,12);
+
+  drawDoughnut('catChart', catE.map(e=>e[0]), catE.map(e=>e[1]), catE.map(e=>CAT_COLOR[e[0]]));
+  drawBar('monthChart', mKeys.map(k=>MONTHS[parseInt(k.slice(5))-1]), mKeys.map(k=>byMonth[k]));
+  drawHBar('vendorChart', venE.map(e=>e[0]), venE.map(e=>e[1]));
+
+  renderList(data);
+}
+
+function renderList(data){
+  const q = (document.getElementById('search').value||'').toLowerCase();
+  const sort = document.getElementById('sortSel').value;
+  let rows = data.slice();
+  if (q) rows = rows.filter(r => (r.expense+' '+r.vendor+' '+r.notes+' '+r.category).toLowerCase().includes(q));
+  rows.sort((a,b)=>{
+    if (sort==='amount') return b.amount-a.amount;
+    if (sort==='name') return a.expense.localeCompare(b.expense);
+    return (b.date?b.date.getTime():0)-(a.date?a.date.getTime():0);
+  });
+  const total = rows.reduce((s,r)=>s+r.amount,0);
+  document.getElementById('listCount').innerHTML = rows.length + ' transactions · <b>' + fmt(total) + '</b>';
+  document.getElementById('txList').innerHTML = rows.map(r => {
+    const dateStr = r.date ? (MONTHS[r.date.getMonth()]+' '+r.date.getDate()) : 'Undated';
+    const meta = [r.category, r.vendor].filter(Boolean).join(' · ');
+    return `<div class="row">
+      <div class="accent" style="background:${CAT_COLOR[r.category]||'#ccc'}"></div>
+      <div class="main">
+        <div class="name">${esc(r.expense)}</div>
+        <div class="meta">${esc(meta)}</div>
+        <div class="status ${r.deductible?'ded':'non'}">${dateStr} · ${r.deductible?'Deductible':'Not deductible'}</div>
+      </div>
+      <div class="right">
+        <div class="amt">${r.amount?fmt2(r.amount):'—'}</div>
+        ${r.mileage?`<div class="mi">${r.mileage.toLocaleString()} mi</div>`:''}
+      </div>
+    </div>`;
+  }).join('') || `<div class="row"><div class="main"><div class="meta">No matching transactions.</div></div></div>`;
+}
+
+/* ---------- charts ---------- */
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#6f6b61';
+function destroy(id){ if(charts[id]){ charts[id].destroy(); delete charts[id]; } }
+function drawDoughnut(id, labels, values, colors){
+  destroy(id);
+  charts[id] = new Chart(document.getElementById(id), {
+    type:'doughnut',
+    data:{ labels, datasets:[{ data:values, backgroundColor:colors, borderColor:'#fdfbf6', borderWidth:2 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'60%',
+      plugins:{ legend:{ position:'right', labels:{ boxWidth:10, padding:9, font:{size:11} } },
+        tooltip:{ callbacks:{ label:c=>c.label+': '+fmt2(c.parsed) } } } }
+  });
+}
+function drawBar(id, labels, values){
+  destroy(id);
+  charts[id] = new Chart(document.getElementById(id), {
+    type:'bar',
+    data:{ labels, datasets:[{ data:values, backgroundColor:'#bd7f2b', borderRadius:5, maxBarThickness:40 }] },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>fmt2(c.parsed.y) } } },
+      scales:{ y:{ beginAtZero:true, ticks:{ callback:v=>'$'+v.toLocaleString() }, grid:{color:'#ebe5d7'} }, x:{ grid:{display:false} } } }
+  });
+}
+function drawHBar(id, labels, values){
+  destroy(id);
+  charts[id] = new Chart(document.getElementById(id), {
+    type:'bar',
+    data:{ labels, datasets:[{ data:values, backgroundColor:'#7c8a44', borderRadius:5 }] },
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:c=>fmt2(c.parsed.x) } } },
+      scales:{ x:{ beginAtZero:true, ticks:{ callback:v=>'$'+v.toLocaleString() }, grid:{color:'#ebe5d7'} }, y:{ grid:{display:false} } } }
+  });
+}
+
+/* ---------- wiring ---------- */
+function showDashboard(){
+  document.getElementById('uploadZone').classList.add('hidden');
+  document.getElementById('dashboard').style.display = 'block';
+  selMonth = 'all'; deductOnly = false;
+  document.getElementById('deductOnly').checked = false;
+  buildControls();
+  render();
+}
+function loadText(text, opts){
+  opts = opts || {};
+  const rows = parseCSV(text);
+  if (rows.length < 2){ if(!opts.silent) alert("That file doesn't look like a CSV with data."); return false; }
+  ingest(rows); showDashboard();
+  if (opts.save){ try { localStorage.setItem('zillah_csv', text); } catch(e){} }
+  return true;
+}
+const fileInput = document.getElementById('fileInput');
+const zone = document.getElementById('uploadZone');
+zone.addEventListener('click', ()=>fileInput.click());
+fileInput.addEventListener('change', e => { const f=e.target.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>loadText(rd.result,{save:true}); rd.readAsText(f); });
+['dragover','dragenter'].forEach(ev=>zone.addEventListener(ev,e=>{ e.preventDefault(); zone.classList.add('drag'); }));
+['dragleave','drop'].forEach(ev=>zone.addEventListener(ev,e=>{ e.preventDefault(); zone.classList.remove('drag'); }));
+zone.addEventListener('drop', e => { const f=e.dataTransfer.files[0]; if(!f) return; const rd=new FileReader(); rd.onload=()=>loadText(rd.result,{save:true}); rd.readAsText(f); });
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  try { localStorage.removeItem('zillah_csv'); } catch(e){}
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('uploadZone').classList.remove('hidden');
+  fileInput.value='';
+});
+document.getElementById('deductOnly').addEventListener('change', e=>{ deductOnly = e.target.checked; render(); });
+document.getElementById('mileRate').addEventListener('input', render);
+document.getElementById('search').addEventListener('input', ()=>renderList(baseFiltered()));
+document.getElementById('sortSel').addEventListener('change', ()=>renderList(baseFiltered()));
+document.getElementById('loadSample').addEventListener('click', e=>{ e.stopPropagation(); loadText(SAMPLE_CSV); });
+
+/* ---------- sample data ---------- */
+const SAMPLE_CSV = `Expense,Amount,Category,Date,Mileage,Notes,Payment Method,Receipt,Tax Deductible,Vendor
+Coffee K-Cups,$36.99,Supplies & Amenities,"February 22, 2026",,,Credit Card,Yes,Yes,Safeway
+Garbage Disposal,$186.41,Maintenance & Repairs,"January 28, 2026",,,Credit Card,Yes,Yes,Home Depot
+Deep Cleaning,$230.00,Cleaning,"March 3, 2026",,,Venmo/PayPal,Yes,Yes,Gabriella Gamet
+AT&T Internet,$47.00,Utilities,"March 1, 2026",,,,No,Yes,AT&T
+Propane Grill,$249.00,Furnishings & Decor,"January 31, 2026",,,Credit Card,Yes,Yes,Home Depot
+Roundtrip Bothell-Zillah,$0.00,Travel,"March 20, 2026",340,Mileage,,No,Yes,Personal Vehicle
+Irrigation supplies,$261.97,Lawn & Outdoor,"April 29, 2026",,,Credit Card,Yes,Yes,Buena-Wilson
+Guest wine stock,$447.06,Supplies & Amenities,"July 17, 2026",,,,Yes,Yes,J Bell Cellars`;
+
+/* ---------- auto-load committed data, then last device upload ---------- */
+/* Commit your CSV to the repo at one of these paths and the page loads it on open. */
+const DATA_CANDIDATES = ['expenses.csv', 'data.csv', 'data/expenses.csv'];
+(async function boot(){
+  for (const url of DATA_CANDIDATES){
+    try {
+      const res = await fetch(url + '?v=' + Date.now(), { cache: 'no-store' });
+      if (res.ok){
+        const t = await res.text();
+        if (t && t.trim() && loadText(t, { silent: true })) return;
+      }
+    } catch(e){}
+  }
+  try {
+    const saved = localStorage.getItem('zillah_csv');
+    if (saved && loadText(saved, { silent: true })) return;
+  } catch(e){}
+})();
+</script>
+</body>
+</html>
