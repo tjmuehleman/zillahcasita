@@ -189,6 +189,23 @@ input[type="search"]:focus, select:focus { outline: 2px solid var(--sage); outli
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
 }
 .marker-wrap { position: relative; }
+.marker-wrap.selected .marker-pin {
+  border-width: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.marker-halo {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 3px solid var(--sage-dark);
+  animation: halo-pulse 1.5s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes halo-pulse {
+  0%   { transform: scale(0.75); opacity: 0.9; }
+  70%  { transform: scale(1.25); opacity: 0; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
 .marker-badge {
   position: absolute;
   top: -7px;

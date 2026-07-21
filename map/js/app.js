@@ -144,13 +144,18 @@
 
   const markerLayer = L.layerGroup().addTo(map);
 
-  function makeIcon(venue, status, hasEventToday) {
-    const color = status.open ? TYPE_COLORS[venue.type] : "#a8a49a";
-    const size = status.open ? 26 : 20;
+  // Clicking empty map space clears the current selection
+  map.on("click", () => closeDetail());
+
+  function makeIcon(venue, status, hasEventToday, isSelected) {
+    // Selected pins always show their type color and a pulsing ring, even when closed
+    const color = status.open || isSelected ? TYPE_COLORS[venue.type] : "#a8a49a";
+    const size = isSelected ? 38 : status.open ? 26 : 20;
     const badge = hasEventToday ? '<span class="marker-badge">🎶</span>' : "";
+    const halo = isSelected ? '<span class="marker-halo"></span>' : "";
     return L.divIcon({
       className: "",
-      html: `<div class="marker-wrap" style="width:${size}px;height:${size}px"><span class="marker-pin" style="background:${color}"></span>${badge}</div>`,
+      html: `<div class="marker-wrap${isSelected ? " selected" : ""}" style="width:${size}px;height:${size}px">${halo}<span class="marker-pin" style="background:${color}"></span>${badge}</div>`,
       iconSize: [size, size],
       iconAnchor: [size / 2, size],
       popupAnchor: [0, -size],
@@ -192,9 +197,10 @@
     for (const { venue, status } of visible) {
       const todaysEvents = eventsOnDay(venue, filter.dayKey);
 
+      const isSelected = state.selected === venue;
       const marker = L.marker([venue.lat, venue.lng], {
-        icon: makeIcon(venue, status, todaysEvents.length > 0),
-        zIndexOffset: status.open ? 500 : 0,
+        icon: makeIcon(venue, status, todaysEvents.length > 0, isSelected),
+        zIndexOffset: isSelected ? 2000 : status.open ? 500 : 0,
       });
       marker.bindPopup(
         `<div class="popup-name">${venue.name}</div>` +
@@ -225,7 +231,7 @@
       `${visible.length} place${visible.length === 1 ? "" : "s"} shown · ${openCount} open ${when}`;
 
     if (state.selected && !visible.some((v) => v.venue === state.selected)) {
-      closeDetail();
+      closeDetail({ skipRender: true });
     } else if (state.selected) {
       renderDetail(state.selected);
     }
@@ -234,19 +240,20 @@
   // ---------- Selection + detail panel ----------
   function selectVenue(venue, opts = {}) {
     state.selected = venue;
-    document.querySelectorAll(".venue-card").forEach((el) => el.classList.remove("selected"));
+    render(); // rebuilds markers so the selected pin gets its highlight
     renderDetail(venue);
     const marker = markers.get(venue);
     if (marker) {
       if (!opts.fromMap) map.panTo([venue.lat, venue.lng]);
       marker.openPopup();
     }
-    render();
   }
 
-  function closeDetail() {
+  function closeDetail(opts = {}) {
+    const hadSelection = state.selected !== null;
     state.selected = null;
     document.getElementById("detail-panel").classList.add("hidden");
+    if (hadSelection && !opts.skipRender) render(); // clear the pin highlight
   }
 
   function renderDetail(venue) {
