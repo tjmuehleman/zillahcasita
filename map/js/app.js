@@ -142,13 +142,6 @@
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  L.marker([HOME.lat, HOME.lng], {
-    icon: L.divIcon({ className: "", html: '<div class="marker-home" title="La Casita de Zillah">🏠</div>', iconSize: [26, 26], iconAnchor: [13, 24] }),
-    zIndexOffset: 1000,
-  })
-    .addTo(map)
-    .bindPopup(`<div class="popup-name">${HOME.name}</div><div>Your home base</div><a class="popup-link" href="${HOME.website}">zillahcasita.com</a>`);
-
   const markerLayer = L.layerGroup().addTo(map);
 
   function makeIcon(venue, status, hasEventToday) {
@@ -427,16 +420,47 @@
   document.getElementById("time-select").value = "any";
 
   function fitAll() {
-    const bounds = L.latLngBounds([[HOME.lat, HOME.lng]]);
-    VENUES.forEach((v) => bounds.extend([v.lat, v.lng]));
+    const bounds = L.latLngBounds(VENUES.map((v) => [v.lat, v.lng]));
     map.fitBounds(bounds.pad(0.12), { maxZoom: 13 });
   }
   fitAll();
-  // Re-fit once everything is laid out (avoids a zero-height init race)
-  window.addEventListener("load", () => {
+
+  // If the map initialized while its container had no size (hidden tab, iframe,
+  // pre-render), re-measure and re-fit the first time it gains real dimensions.
+  const mapEl = document.getElementById("map");
+  let hadSize = mapEl.clientWidth > 0;
+  function onMapResize() {
     map.invalidateSize();
-    fitAll();
-  });
+    if (!hadSize && mapEl.clientWidth > 0) {
+      hadSize = true;
+      fitAll();
+    }
+  }
+  window.addEventListener("load", onMapResize);
+  new ResizeObserver(onMapResize).observe(mapEl);
+
+  // Center on the visitor if they allow location AND are in/near the Yakima Valley;
+  // distant visitors keep the all-venues view (their dot just sits off-map until they arrive).
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude: lat, longitude: lng } = pos.coords;
+        L.circleMarker([lat, lng], {
+          radius: 7,
+          color: "#fff",
+          weight: 2,
+          fillColor: "#2f6fde",
+          fillOpacity: 1,
+        })
+          .addTo(map)
+          .bindPopup("You are here");
+        const nearby = lat > 45.7 && lat < 47.2 && lng > -121.8 && lng < -119.2;
+        if (nearby) map.setView([lat, lng], 12);
+      },
+      () => {}, // declined or unavailable — keep the default view
+      { maximumAge: 300000, timeout: 8000 }
+    );
+  }
 
   render();
   // Refresh "open now" status each minute
