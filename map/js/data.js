@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-07-20";
+const DATA_UPDATED = "2026-08-20";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -142,6 +142,30 @@ const VENUES = [
         "description": "Taproom trivia night.",
         "days": [],
         "url": "https://balebreaker.com/taproom/yakima/"
+      },
+      {
+        "name": "Last Sip of Summer",
+        "schedule": "Sat, Aug 22, 2026, 12-9 PM",
+        "description": "Mini food truck rally in Field 41 with The Pizza Box, Cuba Libre, Xochitl's, and Heavenly Smoked BBQ, plus face painting and entertainment.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-08-22"
+      },
+      {
+        "name": "End of Summer Market",
+        "schedule": "Sun, Aug 30, 2026, 12-4 PM",
+        "description": "Local vendor market in the taproom with beer and food.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-08-30"
+      },
+      {
+        "name": "Summer Music Nights",
+        "schedule": "Fri, Sep 4, 2026, 5-7 PM",
+        "description": "Free live music in the taproom (Waltzerr).",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-04"
       }
     ],
     "city": "Yakima"
@@ -565,12 +589,12 @@ const VENUES = [
     "events": [
       {
         "name": "Karaoke Night",
-        "schedule": "Fridays",
-        "description": "Weekly karaoke.",
+        "schedule": "Fridays 7-10 PM",
+        "description": "Weekly karaoke hosted by DJ Big Ern.",
         "days": [
           "fri"
         ],
-        "url": "https://outskirtsbrewingco.com/"
+        "url": "https://outskirtsbrewingco.com/events"
       },
       {
         "name": "Concert series",
@@ -581,7 +605,15 @@ const VENUES = [
           "fri",
           "sat"
         ],
-        "url": "https://outskirtsbrewingco.com/"
+        "url": "https://outskirtsbrewingco.com/events"
+      },
+      {
+        "name": "Dimestore Prophets w/ Ray Glover",
+        "schedule": "Sat, Aug 29, 2026, 6-10 PM",
+        "description": "Bonus show from a trio blending funk, reggae, and rock; Ray Glover opens at 6 PM.",
+        "days": [],
+        "url": "https://outskirtsbrewingco.com/events",
+        "date": "2026-08-29"
       }
     ],
     "city": "Selah"
@@ -1038,9 +1070,25 @@ const VENUES = [
         "url": "https://www.bosmawine.com/events"
       },
       {
+        "name": "Saturday Night Wine Down",
+        "schedule": "Sat, Sep 19, 2026, 5-8 PM",
+        "description": "Sunset dancing and wine experience in partnership with Haute Ballroom.",
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-09-19"
+      },
+      {
+        "name": "Founders Dinner with The Fat Pastor",
+        "schedule": "Sat, Sep 26, 2026, 5:30-8 PM",
+        "description": "Seated multi-course dinner by chef Shawn Niles paired with Bosma wines.",
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-09-26"
+      },
+      {
         "name": "Catch the Crush Weekend",
         "schedule": "Oct 9-11, 2026",
-        "description": "Harvest-season activities with estate-grown wines.",
+        "description": "Harvest-season activities with estate-grown wines, including a wine-country Poker Run across five wineries.",
         "days": [],
         "url": "https://www.bosmawine.com/events",
         "date": "2026-10-09",
@@ -1048,12 +1096,21 @@ const VENUES = [
       },
       {
         "name": "Hallowine",
-        "schedule": "Late October 2026",
-        "description": "Adult trick-or-treating week with costume perks.",
+        "schedule": "Oct 23-31, 2026",
+        "description": "Adult trick-or-treating week with costume perks and free trick-or-treating for kids.",
         "days": [],
         "url": "https://www.bosmawine.com/events",
-        "date": "2026-10-24",
+        "date": "2026-10-23",
         "endDate": "2026-10-31"
+      },
+      {
+        "name": "Thanksgiving in Wine Country",
+        "schedule": "Nov 27-29, 2026",
+        "description": "Holiday weekend in wine country with shopping and a Shop Small Saturday Market on Nov 28.",
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-11-27",
+        "endDate": "2026-11-29"
       }
     ],
     "city": "Outlook"
@@ -1321,6 +1378,22 @@ const VENUES = [
         "days": [],
         "description": "Weddings, live music, and community events at the event center.",
         "url": "https://www.doodlevineswinery.com/"
+      },
+      {
+        "name": "Live music: The Lost Keys",
+        "schedule": "Thu, Aug 27, 2026, 6 PM",
+        "description": "Evening live music set on the winery grounds.",
+        "days": [],
+        "url": "https://www.doodlevineswinery.com/events",
+        "date": "2026-08-27"
+      },
+      {
+        "name": "Steps in the Vines",
+        "schedule": "Sun, Aug 30, 2026, 6 PM",
+        "description": "Evening event among the vines at the winery.",
+        "days": [],
+        "url": "https://www.doodlevineswinery.com/events",
+        "date": "2026-08-30"
       }
     ],
     "city": "Yakima"
@@ -1458,37 +1531,12 @@ const VENUES = [
     "notes": "Hilltop tasting room at the former Windy Point Vineyards site. On-site kitchen during tasting hours; hours vary seasonally. On-site Airbnb and event space.",
     "events": [
       {
-        "name": "Food truck days",
-        "schedule": "Sat, Aug 1 (Lab Dogs Food Truck) + other summer dates",
-        "description": "Visiting food trucks on the patio.",
+        "name": "90s DJ Night",
+        "schedule": "Sat, Aug 29, 2026, 6-10 PM",
+        "description": "End-of-summer celebration with DJ Garin Moore, a food truck, and prizes for the first 50 ticket holders.",
         "days": [],
-        "url": "https://www.freehandcellars.com/",
-        "date": "2026-08-01"
-      },
-      {
-        "name": "Moonlight Party",
-        "schedule": "Fri, Jul 24, 2026",
-        "description": "Evening party at the winery.",
-        "days": [],
-        "url": "https://www.freehandcellars.com/",
-        "date": "2026-07-24"
-      },
-      {
-        "name": "Goat Snuggles Day",
-        "schedule": "Sat, Aug 8, 2026",
-        "description": "Family-friendly animal event.",
-        "days": [],
-        "url": "https://www.freehandcellars.com/",
-        "date": "2026-08-08"
-      },
-      {
-        "name": "Club Share Weekend",
-        "schedule": "Aug 7-9, 2026",
-        "description": "Multi-winery wine club weekend.",
-        "days": [],
-        "url": "https://www.freehandcellars.com/",
-        "date": "2026-08-07",
-        "endDate": "2026-08-09"
+        "url": "https://www.freehandcellars.com/cal",
+        "date": "2026-08-29"
       }
     ],
     "city": "Wapato"
@@ -1570,17 +1618,6 @@ const VENUES = [
     "byAppointment": false,
     "notes": "Family- and dog-friendly estate winery in West Valley. Fri-Sat close at 7 PM outside summer. Reservations encouraged.",
     "events": [
-      {
-        "name": "Music in the Vines concert series",
-        "schedule": "Friday evenings: Jul 24 & Aug 7, 2026",
-        "days": [
-          "fri"
-        ],
-        "description": "Ticketed outdoor concerts at the winery amphitheater: indie rock, funk, blues rock, and Americana acts.",
-        "url": "https://gilbertcellars.com/",
-        "date": "2026-07-24",
-        "endDate": "2026-08-07"
-      },
       {
         "name": "Food vendors",
         "schedule": "Friday-Sunday in season",
@@ -2469,13 +2506,12 @@ const VENUES = [
     "notes": "Second-generation family winery, open daily year-round; casual patio and lawn.",
     "events": [
       {
-        "name": "Harvest Games + Crush Pad Party",
-        "schedule": "October 2026",
-        "description": "Winemaker competitions, grape stomping, and a dance party on the crush pad.",
+        "name": "2nd Annual Harvest Games + Crush Pad Party",
+        "schedule": "Sat, Oct 10, 2026, 5-10 PM",
+        "description": "Local winemakers compete in harvest games, plus grape stomping and a dance party under the lights on the crush pad.",
         "days": [],
         "url": "https://www.twomountainwinery.com/events",
-        "date": "2026-10-01",
-        "endDate": "2026-10-31"
+        "date": "2026-10-10"
       }
     ],
     "city": "Zillah"
