@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-08-20";
+const DATA_UPDATED = "2026-08-21";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -166,6 +166,38 @@ const VENUES = [
         "days": [],
         "url": "https://www.balebreaker.com/events",
         "date": "2026-09-04"
+      },
+      {
+        "name": "5K Run in Field 41",
+        "schedule": "Sat, Aug 29, 2026, 12-1 PM",
+        "description": "Community 5K run through the hop fields at the Yakima taproom.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-08-29"
+      },
+      {
+        "name": "September Farmers Market",
+        "schedule": "Wed, Sep 2, 2026, 3-7 PM",
+        "description": "Local growers and vendors in the taproom yard, with food trucks.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-02"
+      },
+      {
+        "name": "September Music Bingo",
+        "schedule": "Wed, Sep 9, 2026, 6-8 PM",
+        "description": "Song-based bingo; monthly.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-09"
+      },
+      {
+        "name": "Post Harvest Party",
+        "schedule": "Fri, Sep 25, 2026, 5-9 PM",
+        "description": "End-of-harvest celebration at the Yakima taproom.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-25"
       }
     ],
     "city": "Yakima"
@@ -283,6 +315,38 @@ const VENUES = [
         "description": "Occasional themed events and live music throughout the year.",
         "days": [],
         "url": "https://www.cowichecreekbrewing.com/"
+      },
+      {
+        "name": "118th Apple Cup",
+        "schedule": "Sun, Sep 6, 2026",
+        "description": "Apple Cup watch party with a special local burger.",
+        "days": [],
+        "url": "https://www.cowichecreekbrewing.com/",
+        "date": "2026-09-06"
+      },
+      {
+        "name": "Bite the Brewer / Dunk the Deputy",
+        "schedule": "Sat, Sep 12, 2026",
+        "description": "Fundraiser for the K9 Foundation.",
+        "days": [],
+        "url": "https://www.cowichecreekbrewing.com/",
+        "date": "2026-09-12"
+      },
+      {
+        "name": "Cowiche Brew Run 5K/10K",
+        "schedule": "Sat, Sep 19, 2026",
+        "description": "Run benefiting People for People Meals on Wheels.",
+        "days": [],
+        "url": "https://www.cowichecreekbrewing.com/",
+        "date": "2026-09-19"
+      },
+      {
+        "name": "Tacos Before Turkey",
+        "schedule": "Wed, Nov 25, 2026",
+        "description": "Thanksgiving-eve taco night at the taproom.",
+        "days": [],
+        "url": "https://www.cowichecreekbrewing.com/",
+        "date": "2026-11-25"
       }
     ],
     "city": "Cowiche"
@@ -457,6 +521,21 @@ const VENUES = [
         "description": "Rotating food trucks/vendors at the taproom.",
         "days": [],
         "url": "https://shortheadbrewing.com/"
+      },
+      {
+        "name": "Tieton Summer Nights",
+        "schedule": "Sat, Aug 22, 2026",
+        "description": "Tieton's summer night celebration; brewery participates.",
+        "days": [],
+        "url": "https://shortheadbrewing.com/",
+        "date": "2026-08-22"
+      },
+      {
+        "name": "Short Hede Trivia",
+        "schedule": "Select evenings, 6 PM",
+        "description": "Trivia nights posted on the brewery calendar.",
+        "days": [],
+        "url": "https://shortheadbrewing.com/"
       }
     ],
     "city": "Tieton"
@@ -538,6 +617,22 @@ const VENUES = [
           "sat"
         ],
         "url": "https://singlehillbrewing.com/taproom/"
+      },
+      {
+        "name": "Video Game Night",
+        "schedule": "Thu, Aug 27, 2026, 4-8 PM",
+        "description": "Hosted by Yakima Community Aid; free, all ages.",
+        "days": [],
+        "url": "https://singlehillbrewing.com/taproom/",
+        "date": "2026-08-27"
+      },
+      {
+        "name": "Single Hill Lounge",
+        "schedule": "Fri, Aug 28, 2026, 7-9 PM",
+        "description": "Free DJ night of dub and reggae in the taproom.",
+        "days": [],
+        "url": "https://singlehillbrewing.com/taproom/",
+        "date": "2026-08-28"
       }
     ],
     "city": "Yakima"
@@ -1111,6 +1206,15 @@ const VENUES = [
         "url": "https://www.bosmawine.com/events",
         "date": "2026-11-27",
         "endDate": "2026-11-29"
+      },
+      {
+        "name": "Christmas in the Valley",
+        "schedule": "Dec 1-31, 2026",
+        "description": "Holiday shopping and a featured Holiday Artisan Market through December.",
+        "days": [],
+        "url": "https://www.bosmawine.com/events",
+        "date": "2026-12-01",
+        "endDate": "2026-12-31"
       }
     ],
     "city": "Outlook"
@@ -1381,19 +1485,19 @@ const VENUES = [
       },
       {
         "name": "Live music: The Lost Keys",
-        "schedule": "Thu, Aug 27, 2026, 6 PM",
+        "schedule": "Fri, Aug 28, 2026, 6 PM",
         "description": "Evening live music set on the winery grounds.",
         "days": [],
         "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-08-27"
+        "date": "2026-08-28"
       },
       {
-        "name": "Steps in the Vines",
-        "schedule": "Sun, Aug 30, 2026, 6 PM",
-        "description": "Evening event among the vines at the winery.",
+        "name": "Live music: James Beam",
+        "schedule": "Fri, Sep 25, 2026, 6 PM",
+        "description": "Live music on the patio.",
         "days": [],
         "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-08-30"
+        "date": "2026-09-25"
       }
     ],
     "city": "Yakima"
@@ -1471,6 +1575,14 @@ const VENUES = [
         "description": "Release parties and themed weekends, often with food trucks such as Mill Burn Smashburgers and Tacos Don Chayo.",
         "days": [],
         "url": "https://www.fortuitycellars.com/our-events"
+      },
+      {
+        "name": "Fall Club Party",
+        "schedule": "Sun, Sep 20, 2026, 12-4 PM",
+        "description": "Wine club fall release party at the Wapato tasting room.",
+        "days": [],
+        "url": "https://www.fortuitycellars.com/our-events",
+        "date": "2026-09-20"
       }
     ],
     "city": "Wapato"
@@ -1708,7 +1820,16 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Tuesday-Wednesday by appointment only. Large lawn and gazebo with Mt. Adams views; guided tastings indoors or on the lawn.",
-    "events": [],
+    "events": [
+      {
+        "name": "Fall Bash 2026",
+        "schedule": "Sat, Sep 12, 2026, 11 AM-6 PM",
+        "description": "Fall celebration at the Zillah tasting room.",
+        "days": [],
+        "url": "https://www.hyattvineyards.com/hyatt-events",
+        "date": "2026-09-12"
+      }
+    ],
     "city": "Zillah"
   },
   {
@@ -2372,7 +2493,7 @@ const VENUES = [
       "sun": null
     },
     "byAppointment": false,
-    "notes": "Open only during posted 2026 windows (10:30am-5pm daily): Jul 11-19, Aug 7-16, and Aug 29-Sep 13; closed otherwise. Check Facebook before visiting.",
+    "notes": "Open only during posted 2026 windows (10:30am-5pm daily): Jul 11-19, Aug 7-16, Aug 29-Sep 12, and Oct 8-31; closed Aug 17-28 and Sep 13-Oct 7, and closed for winter after Nov 1. Check Facebook before visiting.",
     "events": [],
     "city": "Zillah"
   },
