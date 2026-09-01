@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-08-21";
+const DATA_UPDATED = "2026-09-01";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -144,36 +144,12 @@ const VENUES = [
         "url": "https://balebreaker.com/taproom/yakima/"
       },
       {
-        "name": "Last Sip of Summer",
-        "schedule": "Sat, Aug 22, 2026, 12-9 PM",
-        "description": "Mini food truck rally in Field 41 with The Pizza Box, Cuba Libre, Xochitl's, and Heavenly Smoked BBQ, plus face painting and entertainment.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-08-22"
-      },
-      {
-        "name": "End of Summer Market",
-        "schedule": "Sun, Aug 30, 2026, 12-4 PM",
-        "description": "Local vendor market in the taproom with beer and food.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-08-30"
-      },
-      {
         "name": "Summer Music Nights",
         "schedule": "Fri, Sep 4, 2026, 5-7 PM",
         "description": "Free live music in the taproom (Waltzerr).",
         "days": [],
         "url": "https://www.balebreaker.com/events",
         "date": "2026-09-04"
-      },
-      {
-        "name": "5K Run in Field 41",
-        "schedule": "Sat, Aug 29, 2026, 12-1 PM",
-        "description": "Community 5K run through the hop fields at the Yakima taproom.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-08-29"
       },
       {
         "name": "September Farmers Market",
@@ -184,12 +160,28 @@ const VENUES = [
         "date": "2026-09-02"
       },
       {
+        "name": "Bale Breaker Book Club: Q3",
+        "schedule": "Tue, Sep 8, 2026, 5-7 PM",
+        "description": "Quarterly taproom book club meetup.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-08"
+      },
+      {
         "name": "September Music Bingo",
         "schedule": "Wed, Sep 9, 2026, 6-8 PM",
         "description": "Song-based bingo; monthly.",
         "days": [],
         "url": "https://www.balebreaker.com/events",
         "date": "2026-09-09"
+      },
+      {
+        "name": "Topcutter Fresh Hop IPA Release",
+        "schedule": "Fri, Sep 11, 2026",
+        "description": "Fresh hop release day for Topcutter IPA, brewed with hops from the surrounding farm.",
+        "days": [],
+        "url": "https://www.balebreaker.com/events",
+        "date": "2026-09-11"
       },
       {
         "name": "Post Harvest Party",
@@ -364,13 +356,13 @@ const VENUES = [
       "tue": null,
       "wed": [
         [
-          "15:00",
+          "16:00",
           "20:00"
         ]
       ],
       "thu": [
         [
-          "15:00",
+          "16:00",
           "20:00"
         ]
       ],
@@ -490,7 +482,7 @@ const VENUES = [
       "thu": [
         [
           "14:00",
-          "20:00"
+          "22:00"
         ]
       ],
       "fri": [
@@ -523,16 +515,24 @@ const VENUES = [
         "url": "https://shortheadbrewing.com/"
       },
       {
-        "name": "Tieton Summer Nights",
-        "schedule": "Sat, Aug 22, 2026",
-        "description": "Tieton's summer night celebration; brewery participates.",
+        "name": "Todd's 60th Birthday",
+        "schedule": "Wed, Sep 2, 2026",
+        "description": "Taproom birthday celebration for Todd, posted on the brewery calendar.",
         "days": [],
         "url": "https://shortheadbrewing.com/",
-        "date": "2026-08-22"
+        "date": "2026-09-02"
+      },
+      {
+        "name": "Todd's Bday Bash - Live Music",
+        "schedule": "Fri, Sep 4, 2026",
+        "description": "Live music birthday bash at the taproom.",
+        "days": [],
+        "url": "https://shortheadbrewing.com/",
+        "date": "2026-09-04"
       },
       {
         "name": "Short Hede Trivia",
-        "schedule": "Select evenings, 6 PM",
+        "schedule": "Roughly every other Wednesday, 6 PM",
         "description": "Trivia nights posted on the brewery calendar.",
         "days": [],
         "url": "https://shortheadbrewing.com/"
@@ -617,22 +617,6 @@ const VENUES = [
           "sat"
         ],
         "url": "https://singlehillbrewing.com/taproom/"
-      },
-      {
-        "name": "Video Game Night",
-        "schedule": "Thu, Aug 27, 2026, 4-8 PM",
-        "description": "Hosted by Yakima Community Aid; free, all ages.",
-        "days": [],
-        "url": "https://singlehillbrewing.com/taproom/",
-        "date": "2026-08-27"
-      },
-      {
-        "name": "Single Hill Lounge",
-        "schedule": "Fri, Aug 28, 2026, 7-9 PM",
-        "description": "Free DJ night of dub and reggae in the taproom.",
-        "days": [],
-        "url": "https://singlehillbrewing.com/taproom/",
-        "date": "2026-08-28"
       }
     ],
     "city": "Yakima"
@@ -701,14 +685,6 @@ const VENUES = [
           "sat"
         ],
         "url": "https://outskirtsbrewingco.com/events"
-      },
-      {
-        "name": "Dimestore Prophets w/ Ray Glover",
-        "schedule": "Sat, Aug 29, 2026, 6-10 PM",
-        "description": "Bonus show from a trio blending funk, reggae, and rock; Ray Glover opens at 6 PM.",
-        "days": [],
-        "url": "https://outskirtsbrewingco.com/events",
-        "date": "2026-08-29"
       }
     ],
     "city": "Selah"
@@ -1484,14 +1460,6 @@ const VENUES = [
         "url": "https://www.doodlevineswinery.com/"
       },
       {
-        "name": "Live music: The Lost Keys",
-        "schedule": "Fri, Aug 28, 2026, 6 PM",
-        "description": "Evening live music set on the winery grounds.",
-        "days": [],
-        "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-08-28"
-      },
-      {
         "name": "Live music: James Beam",
         "schedule": "Fri, Sep 25, 2026, 6 PM",
         "description": "Live music on the patio.",
@@ -1641,16 +1609,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Hilltop tasting room at the former Windy Point Vineyards site. On-site kitchen during tasting hours; hours vary seasonally. On-site Airbnb and event space.",
-    "events": [
-      {
-        "name": "90s DJ Night",
-        "schedule": "Sat, Aug 29, 2026, 6-10 PM",
-        "description": "End-of-summer celebration with DJ Garin Moore, a food truck, and prizes for the first 50 ticket holders.",
-        "days": [],
-        "url": "https://www.freehandcellars.com/cal",
-        "date": "2026-08-29"
-      }
-    ],
+    "events": [],
     "city": "Wapato"
   },
   {
@@ -2484,16 +2443,51 @@ const VENUES = [
     "phone": "(509) 654-9753",
     "website": "http://tanjuli.com/",
     "hours": {
-      "mon": null,
-      "tue": null,
-      "wed": null,
-      "thu": null,
-      "fri": null,
-      "sat": null,
-      "sun": null
+      "mon": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "tue": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "wed": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "thu": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "fri": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "sat": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ],
+      "sun": [
+        [
+          "10:30",
+          "17:00"
+        ]
+      ]
     },
     "byAppointment": false,
-    "notes": "Open only during posted 2026 windows (10:30am-5pm daily): Jul 11-19, Aug 7-16, Aug 29-Sep 12, and Oct 8-31; closed Aug 17-28 and Sep 13-Oct 7, and closed for winter after Nov 1. Check Facebook before visiting.",
+    "notes": "Currently open (Aug 29-Sep 12 window), 10:30am-5pm daily. Open only during posted 2026 windows: Jul 11-19, Aug 7-16, Aug 29-Sep 12, and Oct 8-31; closed Sep 13-Oct 7, and closed for winter after Nov 1. Check Facebook before visiting.",
     "events": [],
     "city": "Zillah"
   },
