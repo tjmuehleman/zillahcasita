@@ -685,6 +685,22 @@ const VENUES = [
           "sat"
         ],
         "url": "https://outskirtsbrewingco.com/events"
+      },
+      {
+        "name": "Felix & Fingers Dueling Pianos",
+        "schedule": "Sat, Sep 26, 2026, 5-9 PM",
+        "description": "Back by popular demand; doors at 5 PM, show at 6 PM. Ticketed.",
+        "days": [],
+        "url": "https://outskirtsbrewingco.com/events",
+        "date": "2026-09-26"
+      },
+      {
+        "name": "Dinner with Medium Melissa Henyan",
+        "schedule": "Tue, Sep 29, 2026, 6-9 PM",
+        "description": "Dinner service at 6 PM; psychic medium session begins at 7 PM. Ticketed.",
+        "days": [],
+        "url": "https://outskirtsbrewingco.com/events",
+        "date": "2026-09-29"
       }
     ],
     "city": "Selah"
@@ -2794,7 +2810,24 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Closed Monday-Tuesday.",
-    "events": [],
+    "events": [
+      {
+        "name": "A Toast of Hope",
+        "schedule": "Sat, Sep 12, 2026, 6:30 PM",
+        "description": "Charity evening benefiting cancer care; $55 per person.",
+        "days": [],
+        "url": "https://whitmanhillwine.com/events/",
+        "date": "2026-09-12"
+      },
+      {
+        "name": "4th Annual Crush for Cancer",
+        "schedule": "Sat, Sep 19, 2026, 11 AM-8 PM",
+        "description": "Fundraiser for North Star Lodge with grape stomp, vineyard tours, food truck, raffle, and live music.",
+        "days": [],
+        "url": "https://whitmanhillwine.com/events/",
+        "date": "2026-09-19"
+      }
+    ],
     "city": "Zillah"
   },
   {
