@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-09-01";
+const DATA_UPDATED = "2026-09-10";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -144,38 +144,6 @@ const VENUES = [
         "url": "https://balebreaker.com/taproom/yakima/"
       },
       {
-        "name": "Summer Music Nights",
-        "schedule": "Fri, Sep 4, 2026, 5-7 PM",
-        "description": "Free live music in the taproom (Waltzerr).",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-09-04"
-      },
-      {
-        "name": "September Farmers Market",
-        "schedule": "Wed, Sep 2, 2026, 3-7 PM",
-        "description": "Local growers and vendors in the taproom yard, with food trucks.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-09-02"
-      },
-      {
-        "name": "Bale Breaker Book Club: Q3",
-        "schedule": "Tue, Sep 8, 2026, 5-7 PM",
-        "description": "Quarterly taproom book club meetup.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-09-08"
-      },
-      {
-        "name": "September Music Bingo",
-        "schedule": "Wed, Sep 9, 2026, 6-8 PM",
-        "description": "Song-based bingo; monthly.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-09-09"
-      },
-      {
         "name": "Topcutter Fresh Hop IPA Release",
         "schedule": "Fri, Sep 11, 2026",
         "description": "Fresh hop release day for Topcutter IPA, brewed with hops from the surrounding farm.",
@@ -309,17 +277,9 @@ const VENUES = [
         "url": "https://www.cowichecreekbrewing.com/"
       },
       {
-        "name": "118th Apple Cup",
-        "schedule": "Sun, Sep 6, 2026",
-        "description": "Apple Cup watch party with a special local burger.",
-        "days": [],
-        "url": "https://www.cowichecreekbrewing.com/",
-        "date": "2026-09-06"
-      },
-      {
         "name": "Bite the Brewer / Dunk the Deputy",
         "schedule": "Sat, Sep 12, 2026",
-        "description": "Fundraiser for the K9 Foundation.",
+        "description": "Fundraiser for the K9 Foundation, with a free concert by Borderline.",
         "days": [],
         "url": "https://www.cowichecreekbrewing.com/",
         "date": "2026-09-12"
@@ -515,22 +475,6 @@ const VENUES = [
         "url": "https://shortheadbrewing.com/"
       },
       {
-        "name": "Todd's 60th Birthday",
-        "schedule": "Wed, Sep 2, 2026",
-        "description": "Taproom birthday celebration for Todd, posted on the brewery calendar.",
-        "days": [],
-        "url": "https://shortheadbrewing.com/",
-        "date": "2026-09-02"
-      },
-      {
-        "name": "Todd's Bday Bash - Live Music",
-        "schedule": "Fri, Sep 4, 2026",
-        "description": "Live music birthday bash at the taproom.",
-        "days": [],
-        "url": "https://shortheadbrewing.com/",
-        "date": "2026-09-04"
-      },
-      {
         "name": "Short Hede Trivia",
         "schedule": "Roughly every other Wednesday, 6 PM",
         "description": "Trivia nights posted on the brewery calendar.",
@@ -617,6 +561,22 @@ const VENUES = [
           "sat"
         ],
         "url": "https://singlehillbrewing.com/taproom/"
+      },
+      {
+        "name": "Single Hill Sessions: Haystack Slim & The Broken Arrow",
+        "schedule": "Sat, Sep 19, 2026, 7 PM",
+        "description": "Final show of the 2026 Single Hill Sessions live music series.",
+        "days": [],
+        "url": "https://www.visityakima.com/yakima-valley-event-by-business/single-hill-brewing-company",
+        "date": "2026-09-19"
+      },
+      {
+        "name": "Annual Post-Harvest Party: FRESH FUNC",
+        "schedule": "Fri, Oct 9, 2026",
+        "description": "Annual post-harvest party celebrating the FRESH FUNC fresh hop release.",
+        "days": [],
+        "url": "https://www.visityakima.com/yakima-valley-event-by-business/single-hill-brewing-company",
+        "date": "2026-10-09"
       }
     ],
     "city": "Yakima"
@@ -2702,16 +2662,6 @@ const VENUES = [
     "byAppointment": false,
     "notes": "Summer hours shown; shorter off-season. On-site Tin Roof Grill food service; large event lawn.",
     "events": [
-      {
-        "name": "Sounds of Summer Concert Series",
-        "schedule": "Roughly every other Friday evening, July-early September",
-        "days": [
-          "fri"
-        ],
-        "description": "Live bands on the lawn with food and wine; season passes available.",
-        "url": "https://vanarnamvineyards.com/events",
-        "endDate": "2026-09-11"
-      },
       {
         "name": "Catch the Crush",
         "schedule": "Oct 9-11, 2026",
