@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-09-10";
+const DATA_UPDATED = "2026-09-14";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -77,25 +77,25 @@ const VENUES = [
     "hours": {
       "mon": [
         [
-          "15:00",
+          "12:00",
           "21:00"
         ]
       ],
       "tue": [
         [
-          "15:00",
+          "12:00",
           "21:00"
         ]
       ],
       "wed": [
         [
-          "15:00",
+          "12:00",
           "21:00"
         ]
       ],
       "thu": [
         [
-          "15:00",
+          "12:00",
           "21:00"
         ]
       ],
@@ -114,12 +114,12 @@ const VENUES = [
       "sun": [
         [
           "12:00",
-          "20:00"
+          "18:00"
         ]
       ]
     },
     "byAppointment": false,
-    "notes": "Taproom in the middle of a 4th-generation family hop farm (Moxee area, east of Yakima); 16 taps, large patio and lawn games; dog and family friendly; rotating food trucks daily.",
+    "notes": "Taproom in the middle of a 4th-generation family hop farm (Moxee area, east of Yakima); 16 taps, large patio and lawn games; dog and family friendly; rotating food trucks daily. Extended harvest hours (Mon-Sat 12-9) run through Sep 25; regular hours are Mon-Thu 3-9, Fri-Sat 12-9, Sun 12-6.",
     "events": [
       {
         "name": "Rotating food trucks",
@@ -144,20 +144,20 @@ const VENUES = [
         "url": "https://balebreaker.com/taproom/yakima/"
       },
       {
-        "name": "Topcutter Fresh Hop IPA Release",
-        "schedule": "Fri, Sep 11, 2026",
-        "description": "Fresh hop release day for Topcutter IPA, brewed with hops from the surrounding farm.",
-        "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-09-11"
-      },
-      {
         "name": "Post Harvest Party",
         "schedule": "Fri, Sep 25, 2026, 5-9 PM",
         "description": "End-of-harvest celebration at the Yakima taproom.",
         "days": [],
         "url": "https://www.balebreaker.com/events",
         "date": "2026-09-25"
+      },
+      {
+        "name": "September Trivia Night",
+        "schedule": "Tue, Sep 15, 2026, 6-8:30 PM",
+        "description": "Monthly taproom trivia night.",
+        "days": [],
+        "url": "https://balebreaker.com/events/",
+        "date": "2026-09-15"
       }
     ],
     "city": "Yakima"
@@ -275,14 +275,6 @@ const VENUES = [
         "description": "Occasional themed events and live music throughout the year.",
         "days": [],
         "url": "https://www.cowichecreekbrewing.com/"
-      },
-      {
-        "name": "Bite the Brewer / Dunk the Deputy",
-        "schedule": "Sat, Sep 12, 2026",
-        "description": "Fundraiser for the K9 Foundation, with a free concert by Borderline.",
-        "days": [],
-        "url": "https://www.cowichecreekbrewing.com/",
-        "date": "2026-09-12"
       },
       {
         "name": "Cowiche Brew Run 5K/10K",
@@ -1442,6 +1434,14 @@ const VENUES = [
         "days": [],
         "url": "https://www.doodlevineswinery.com/events",
         "date": "2026-09-25"
+      },
+      {
+        "name": "Car Show",
+        "schedule": "Sun, Sep 27, 2026, 10 AM",
+        "description": "Classic car show on the winery grounds with wine and live wine-country atmosphere.",
+        "days": [],
+        "url": "https://www.doodlevineswinery.com/events",
+        "date": "2026-09-27"
       }
     ],
     "city": "Yakima"
@@ -1485,12 +1485,7 @@ const VENUES = [
       ],
       "tue": null,
       "wed": null,
-      "thu": [
-        [
-          "11:00",
-          "17:00"
-        ]
-      ],
+      "thu": null,
       "fri": [
         [
           "11:00",
@@ -1511,7 +1506,7 @@ const VENUES = [
       ]
     },
     "byAppointment": false,
-    "notes": "Open Thu-Mon 11-5; Tue-Wed by appointment. Walk-ins welcome; prepaid reservations required for groups of 8+. Kids and dogs welcome; outside food allowed on patio/lawn.",
+    "notes": "Harvest hours through Oct 26: open Fri-Mon 11-5; Tue-Thu by appointment. Walk-ins welcome; prepaid reservations required for groups of 8+. Kids and dogs welcome; outside food allowed on patio/lawn.",
     "events": [
       {
         "name": "Signature wine weekends",
@@ -1646,13 +1641,13 @@ const VENUES = [
       "fri": [
         [
           "11:00",
-          "20:00"
+          "19:00"
         ]
       ],
       "sat": [
         [
           "11:00",
-          "20:00"
+          "19:00"
         ]
       ],
       "sun": [
@@ -1707,7 +1702,7 @@ const VENUES = [
       ]
     },
     "byAppointment": false,
-    "notes": "Seasonal: open Sat-Sun 12-5 mid-April through fall; closed in winter. Weekday visits by phone arrangement. Also pours the Maison de Padgett label; vintage gift shop on site.",
+    "notes": "Seasonal: open Sat-Sun 12-5 mid-April through fall; closed in winter. Weekday visits by phone arrangement. Also pours the Maison de Padgett label; vintage gift shop on site. The winery has announced it is closing, with Spring Barrel 2027 as its final event.",
     "events": [],
     "city": "Zillah"
   },
@@ -1755,16 +1750,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Tuesday-Wednesday by appointment only. Large lawn and gazebo with Mt. Adams views; guided tastings indoors or on the lawn.",
-    "events": [
-      {
-        "name": "Fall Bash 2026",
-        "schedule": "Sat, Sep 12, 2026, 11 AM-6 PM",
-        "description": "Fall celebration at the Zillah tasting room.",
-        "days": [],
-        "url": "https://www.hyattvineyards.com/hyatt-events",
-        "date": "2026-09-12"
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -2419,51 +2405,16 @@ const VENUES = [
     "phone": "(509) 654-9753",
     "website": "http://tanjuli.com/",
     "hours": {
-      "mon": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "tue": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "wed": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "thu": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "fri": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "sat": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ],
-      "sun": [
-        [
-          "10:30",
-          "17:00"
-        ]
-      ]
+      "mon": null,
+      "tue": null,
+      "wed": null,
+      "thu": null,
+      "fri": null,
+      "sat": null,
+      "sun": null
     },
     "byAppointment": false,
-    "notes": "Currently open (Aug 29-Sep 12 window), 10:30am-5pm daily. Open only during posted 2026 windows: Jul 11-19, Aug 7-16, Aug 29-Sep 12, and Oct 8-31; closed Sep 13-Oct 7, and closed for winter after Nov 1. Check Facebook before visiting.",
+    "notes": "Currently CLOSED (Sep 13-Oct 7). Open only during posted 2026 windows: Jul 11-19, Aug 7-16, Aug 29-Sep 12, and Oct 8-31, 10:30am-5pm daily; closed for winter after Nov 1. Check Facebook before visiting.",
     "events": [],
     "city": "Zillah"
   },
@@ -2761,14 +2712,6 @@ const VENUES = [
     "byAppointment": false,
     "notes": "Closed Monday-Tuesday.",
     "events": [
-      {
-        "name": "A Toast of Hope",
-        "schedule": "Sat, Sep 12, 2026, 6:30 PM",
-        "description": "Charity evening benefiting cancer care; $55 per person.",
-        "days": [],
-        "url": "https://whitmanhillwine.com/events/",
-        "date": "2026-09-12"
-      },
       {
         "name": "4th Annual Crush for Cancer",
         "schedule": "Sat, Sep 19, 2026, 11 AM-8 PM",
