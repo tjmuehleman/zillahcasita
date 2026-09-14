@@ -152,12 +152,20 @@ const VENUES = [
         "date": "2026-09-25"
       },
       {
-        "name": "September Trivia Night",
-        "schedule": "Tue, Sep 15, 2026, 6-8:30 PM",
-        "description": "Monthly taproom trivia night.",
+        "name": "Green Rush Fresh Hop IPA Release",
+        "schedule": "Tue, Sep 22, 2026, 12-9 PM",
+        "description": "Fresh hop IPA collaboration with Russian River, brewed with hops picked during the Yakima Valley harvest.",
         "days": [],
         "url": "https://balebreaker.com/events/",
-        "date": "2026-09-15"
+        "date": "2026-09-22"
+      },
+      {
+        "name": "Citra Slicker Wet Hop IPA Release",
+        "schedule": "Tue, Sep 29, 2026, 3-9 PM",
+        "description": "Wet hop collaboration with Cloudburst Brewing, first brewed in 2014.",
+        "days": [],
+        "url": "https://balebreaker.com/events/",
+        "date": "2026-09-29"
       }
     ],
     "city": "Yakima"
