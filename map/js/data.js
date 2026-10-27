@@ -4,7 +4,7 @@
 // weekdays for weekly-recurring events; date/endDate (YYYY-MM-DD) for dated ones.
 // Past-dated events are hidden at runtime and should be pruned from this file.
 
-const DATA_UPDATED = "2026-10-08";
+const DATA_UPDATED = "2026-10-27";
 
 const HOME = {
   name: "La Casita de Zillah",
@@ -65,19 +65,27 @@ const VENUES = [
     "notes": "Hockey-themed brewery opened 2023; snack kitchen with house-made pizzas and small eats; family and dog friendly.",
     "events": [
       {
-        "name": "Beer with Brewer",
-        "schedule": "Thu, Oct 8, 2026, 6-8 PM",
-        "description": "Tour the brewery and talk shop with Chris, the brewer and owner, over beer and scratch-made food.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/52450-Beer-with-Brewer-at-5th-Line-Brewing-Co.",
-        "date": "2026-10-08"
-      },
-      {
         "name": "Trivia Night",
         "schedule": "1st and 2nd Thursday of the month, 6 PM",
         "description": "Bring a team and play for prizes.",
         "days": [],
         "url": "https://www.visityakima.com/events/53792-Trivia-Night-at-5th-Line-Brewing"
+      },
+      {
+        "name": "Music Bingo",
+        "schedule": "Fri, Nov 20, 2026, 6 PM",
+        "description": "Music bingo with Team Welle on the third Friday of the month.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/51998-Music-Bingo-at-5th-Line-Brewing/",
+        "date": "2026-11-20"
+      },
+      {
+        "name": "Music Bingo",
+        "schedule": "Fri, Dec 18, 2026, 6 PM",
+        "description": "Music bingo with Team Welle on the third Friday of the month.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/51999-Music-Bingo-at-5th-Line-Brewing/",
+        "date": "2026-12-18"
       }
     ],
     "city": "Yakima"
@@ -154,34 +162,42 @@ const VENUES = [
       },
       {
         "name": "Trivia Night",
-        "schedule": "Monthly",
+        "schedule": "Third Tuesday of the month",
         "description": "Taproom trivia night.",
         "days": [],
-        "url": "https://balebreaker.com/taproom/yakima/"
+        "url": "https://www.visityakima.com/events/51230-Trivia-Night-3rd-Tuesdays-at-Bale-Breaker-Brewing-Company/"
       },
       {
-        "name": "Hangover Brunch with Crafted",
-        "schedule": "Sun, Oct 11, 2026, 12-5 PM",
-        "description": "Brunch service from Crafted alongside the taproom's fresh pours.",
+        "name": "Hallows Eve & High Camp Release",
+        "schedule": "Fri, Oct 30, 2026",
+        "description": "Halloween night at the taproom with caramel apples, kettle corn, food trucks, flash-art tattoos, and the High Camp release.",
         "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-10-11"
+        "url": "https://www.visityakima.com/events/54088-Hallows-Eve-&-High-Camp-release-at-Bale-Breaker-Brewing-Company/",
+        "date": "2026-10-30"
       },
       {
-        "name": "Wake Me Up When Harvest Ends: Emo Night 2026",
-        "schedule": "Fri, Oct 16, 2026, 5-9 PM",
-        "description": "Third annual end-of-harvest emo night with a full playlist, fire pits, and themed activities.",
+        "name": "November Music Bingo",
+        "schedule": "Wed, Nov 11, 2026, 6-8 PM",
+        "description": "Monthly music bingo on the second Wednesday; bingo cards use song titles instead of numbers. Free to play.",
         "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-10-16"
+        "url": "https://www.visityakima.com/events/52011-November-Music-Bingo-at-Bale-Breaker-Brewing-Co.-/",
+        "date": "2026-11-11"
       },
       {
-        "name": "A Court of Thorns and Roses Trivia Night",
-        "schedule": "Fri, Oct 23, 2026, 6-9 PM",
-        "description": "Trivia night devoted to the ACOTAR series.",
+        "name": "Cabin Fever Ski Party",
+        "schedule": "Fri, Nov 13, 2026",
+        "description": "Apres-ski cabin night for the High Camp Winter IPA release, with a White Pass Foundation raffle and a vinyl DJ set 6-9 PM.",
         "days": [],
-        "url": "https://www.balebreaker.com/events",
-        "date": "2026-10-23"
+        "url": "https://www.visityakima.com/events/54089-Cabin-Fever-Ski-Party-at-Bale-Breaker-Brewing-Co./",
+        "date": "2026-11-13"
+      },
+      {
+        "name": "December Music Bingo",
+        "schedule": "Wed, Dec 9, 2026, 6-8 PM",
+        "description": "Monthly music bingo on the second Wednesday. Free to play.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/52012-December-Music-Bingo-at-Bale-Breaker-Brewing-Co/",
+        "date": "2026-12-09"
       }
     ],
     "city": "Yakima"
@@ -307,6 +323,15 @@ const VENUES = [
         "days": [],
         "url": "https://www.cowichecreekbrewing.com/",
         "date": "2026-11-25"
+      },
+      {
+        "name": "Prime Rib Dinner (Meat at the Creek)",
+        "schedule": "Every Friday during the cold-weather months",
+        "description": "Weekly prime rib dinner with a loaded baked potato and sides.",
+        "days": [
+          "fri"
+        ],
+        "url": "https://www.visityakima.com/events/54020-Prime-Rib-Dinner-Every-Friday-at-Cowiche-Creek-Brewing-Company/"
       }
     ],
     "city": "Cowiche"
@@ -571,12 +596,28 @@ const VENUES = [
         "url": "https://singlehillbrewing.com/taproom/"
       },
       {
-        "name": "Annual Post-Harvest Party: FRESH FUNC",
-        "schedule": "Fri, Oct 9, 2026, 6-10 PM",
-        "description": "Free fresh-hop celebration with guest pours from Varietal, Bale Breaker, Shorthead, Outskirts, and Haas, plus Nick Fenton spinning vinyl all night.",
+        "name": "Halloween Bash",
+        "schedule": "Sat, Oct 31, 2026, 8 PM",
+        "description": "Dim lights, decorations, a 9:30 PM costume contest, and DJ Danny J spinning 90s hip-hop.",
         "days": [],
-        "url": "https://www.visityakima.com/yakima-valley-event-by-business/single-hill-brewing-company",
-        "date": "2026-10-09"
+        "url": "https://www.visityakima.com/events/53850-Halloween-Bash-at-Single-Hill-Brewing-Co./",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "Holiday Market",
+        "schedule": "Sat, Nov 14, 2026, 11 AM-3 PM",
+        "description": "Local makers and vendors in the taproom, with coffee and food.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54087-Holiday-Market-at-Single-Hill-Brewing-Company/",
+        "date": "2026-11-14"
+      },
+      {
+        "name": "Holiday Market",
+        "schedule": "Sat, Dec 5, 2026, 11 AM-3 PM",
+        "description": "Local makers and vendors in the taproom, with coffee and food.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54090-Holiday-Market-at-Single-Hill-Brewing-Company/",
+        "date": "2026-12-05"
       }
     ],
     "city": "Yakima"
@@ -663,6 +704,14 @@ const VENUES = [
           "sun"
         ],
         "url": "https://outskirtsbrewingco.com/selah-yakima-the-outskirts-brewing-company-events"
+      },
+      {
+        "name": "Sleigh the Night: Rod's House Fundraiser",
+        "schedule": "Fri, Dec 4, 2026",
+        "description": "Holiday fundraiser for Rod's House with music bingo, live and silent auctions, and a dessert dash.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53890-Sleight-the-Night-a-Rod's-House-Fundraiser-at-Outskirts-Brewing-Co./",
+        "date": "2026-12-04"
       }
     ],
     "city": "Selah"
@@ -721,7 +770,17 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Brewpub/taproom on River Road in the Fruitvale area; food available on site (El Rey food).",
-    "events": [],
+    "events": [
+      {
+        "name": "Trivia Tuesdays",
+        "schedule": "Tuesdays, 7 PM",
+        "description": "Trivia night hosted by Packmule.",
+        "days": [
+          "tue"
+        ],
+        "url": "https://www.visityakima.com/events/48071-Trivia-Tuesdays-at-Valley-Brewing-Co./"
+      }
+    ],
     "city": "Yakima"
   },
   {
@@ -879,35 +938,17 @@ const VENUES = [
       "tue": null,
       "wed": null,
       "thu": null,
-      "fri": [
-        [
-          "11:00",
-          "20:00"
-        ]
-      ],
-      "sat": [
-        [
-          "11:00",
-          "20:00"
-        ]
-      ],
-      "sun": [
-        [
-          "11:00",
-          "17:00"
-        ]
-      ]
+      "fri": null,
+      "sat": null,
+      "sun": null
     },
     "byAppointment": false,
-    "notes": "Cider bar for Tieton Cider Works (orchards in Tieton). Indoor/outdoor seating, bocce court, flights, new food menu. Recently relaunched after a 2026 revamp - confirm hours on Facebook before visiting.",
+    "notes": "CLOSED for a revamp (as of Oct 2026) - the cider bar is not open to the public; online orders ship direct. Cider bar for Tieton Cider Works (orchards in Tieton), with indoor/outdoor seating and a bocce court when open.",
     "events": [
       {
         "name": "Apple Bin Stage concerts",
-        "schedule": "Occasional summer weekends",
-        "days": [
-          "sat",
-          "sun"
-        ],
+        "schedule": "Paused while the cider bar is closed for a revamp",
+        "days": [],
         "description": "Outdoor concerts on the cidery's apple-bin stage.",
         "url": "https://tietonciderworks.com/tasting-room-hours-and-events/"
       },
@@ -1054,17 +1095,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "French chateau-style tasting room and pond. Official website is currently offline; check Facebook. Some listings show closed Tue-Wed - call ahead midweek.",
-    "events": [
-      {
-        "name": "Catch the Crush: Taste the Grapes",
-        "schedule": "Oct 9-11, 2026, 10 AM-5 PM",
-        "description": "Taste the individual estate grapes alongside the wines they become - chardonnay, cabernet, petit verdot, merlot, riesling, and gewurztraminer. No admission charge.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/52691-CATCH-THE-CRUSH-AT-BONAIR-WINERY--TASTE-THE-GRAPES!",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -1129,15 +1160,6 @@ const VENUES = [
         "url": "https://www.bosmawine.com/events"
       },
       {
-        "name": "Catch the Crush Weekend",
-        "schedule": "Oct 9-11, 2026",
-        "description": "Harvest-season activities with estate-grown wines, including a wine-country Poker Run across five wineries.",
-        "days": [],
-        "url": "https://www.bosmawine.com/events",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
-      },
-      {
         "name": "Hallowine",
         "schedule": "Oct 23-31, 2026",
         "description": "Adult trick-or-treating week with costume perks and free trick-or-treating for kids.",
@@ -1163,6 +1185,14 @@ const VENUES = [
         "url": "https://www.bosmawine.com/events",
         "date": "2026-12-01",
         "endDate": "2026-12-31"
+      },
+      {
+        "name": "Thanksgiving Centerpiece Workshop",
+        "schedule": "Sun, Nov 15, 2026, 2 PM",
+        "description": "Build a Thanksgiving floral centerpiece with Tina Bosma in the tasting room; $55 includes supplies and a glass of wine.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53910-Thanksgiving-Centerpiece-Workshop-at-Bosma-Estate-Winery/",
+        "date": "2026-11-15"
       }
     ],
     "city": "Outlook"
@@ -1375,21 +1405,12 @@ const VENUES = [
         "url": "https://dineenvineyards.com/pages/our-events"
       },
       {
-        "name": "Catch the Crush",
-        "schedule": "Oct 9-11, 2026",
-        "description": "A front-row seat on harvest - picking, tractors, and grape processing - plus newly released wines and a food truck on Saturday.",
+        "name": "HalloWine",
+        "schedule": "Sat, Oct 31, 2026",
+        "description": "Rattlesnake Hills HalloWine weekend: the tasting room is decked out in Halloween motif, staff in costume, and end-of-season specials.",
         "days": [],
-        "url": "https://www.visityakima.com/events/52689-Catch-the-Crush-at-Dineen-Vineyards",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
-      },
-      {
-        "name": "Harvest Experience",
-        "schedule": "Sat, Oct 17, 2026, 10 AM-noon",
-        "description": "Walk the vineyard with the winemaking team, measure Brix with a refractometer, taste grapes off the vine, and sample bottled wines in the cellar. $50 per person; space is limited.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/52003-Harvest-Experience-at-Dineen-Vineyards",
-        "date": "2026-10-17"
+        "url": "https://www.visityakima.com/events/53772-HalloWine-at-Dineen-Vineyards/",
+        "date": "2026-10-31"
       }
     ],
     "city": "Zillah"
@@ -1449,36 +1470,28 @@ const VENUES = [
         "url": "https://www.doodlevineswinery.com/"
       },
       {
-        "name": "Live music: Parker Project",
-        "schedule": "Fri, Oct 9, 2026, 5 PM",
-        "description": "Live music from Parker Project among the vineyards and orchards. Dog friendly.",
-        "days": [],
-        "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-10-09"
-      },
-      {
-        "name": "Live music: LTD",
-        "schedule": "Fri, Oct 16, 2026, 5 PM",
-        "description": "Live music from LTD among the vineyards and orchards. Dog friendly.",
-        "days": [],
-        "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-10-16"
-      },
-      {
-        "name": "Live music: Rondi and Bart",
-        "schedule": "Fri, Oct 23, 2026, 5 PM",
-        "description": "Live music from Rondi and Bart among the vineyards and orchards. Dog friendly.",
-        "days": [],
-        "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-10-23"
-      },
-      {
         "name": "Fall Harvest Market",
-        "schedule": "Sat, Oct 31, 2026, 12 PM",
+        "schedule": "Sun, Nov 1, 2026, 12 PM",
         "description": "Fall market among the vineyards and orchards.",
         "days": [],
-        "url": "https://www.doodlevineswinery.com/events",
-        "date": "2026-10-31"
+        "url": "https://www.visityakima.com/events/53909-Fall-Harvest-Market-at-Doodlevines-Winery-and-Event-Center/",
+        "date": "2026-11-01"
+      },
+      {
+        "name": "Card Making Class: Iris Folding Bird",
+        "schedule": "Thu, Oct 29, 2026, 6 PM",
+        "description": "Hands-on iris folding card making class with a glass of wine; no experience needed.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54001-Card-Making-Class:-Iris-Folding-Bird-at-Doodlevines-Winery-and-Event-Center/",
+        "date": "2026-10-29"
+      },
+      {
+        "name": "Live music: Jeremiah Vaught",
+        "schedule": "Fri, Oct 30, 2026, 5-7 PM",
+        "description": "Live music from Jeremiah Vaught among the vineyards and orchards. Free to attend.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53985-Live-Music-with-Jeremiah-Vaught-DoodleVines-/",
+        "date": "2026-10-30"
       }
     ],
     "city": "Yakima"
@@ -1551,6 +1564,15 @@ const VENUES = [
         "description": "Release parties and themed weekends, often with food trucks such as Mill Burn Smashburgers and Tacos Don Chayo.",
         "days": [],
         "url": "https://www.fortuitycellars.com/our-events"
+      },
+      {
+        "name": "Thanksgiving in Wine Country",
+        "schedule": "Nov 28-29, 2026, 11 AM-4 PM",
+        "description": "Holiday weekend tasting; bring five nonperishable food items or donate $5 to the local food bank for a prize spin.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54037-Thanksgiving-in-Wine-Country-at-Fortuity-Cellars/",
+        "date": "2026-11-28",
+        "endDate": "2026-11-29"
       }
     ],
     "city": "Wapato"
@@ -1611,13 +1633,21 @@ const VENUES = [
     "notes": "Hilltop tasting room at the former Windy Point Vineyards site. On-site kitchen during tasting hours; hours vary seasonally. On-site Airbnb and event space.",
     "events": [
       {
-        "name": "Catch the Crush",
-        "schedule": "Oct 9-11, 2026, 11 AM-3 PM",
-        "description": "Grape stomping daily 11 AM-3 PM, an inaugural Autumn Market of regional artisans on Saturday, and live music from Sammy Steele 3-5 PM Saturday. Free admission.",
+        "name": "HalloWine: Trick or Treat... if you dare!",
+        "schedule": "Sat, Oct 31, 2026",
+        "description": "Come in costume for a treat, plus Spooky Sangria and the full tasting menu and kitchen.",
         "days": [],
-        "url": "https://www.visityakima.com/events/53744-Catch-the-Crush-at-Freehand-Cellars",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
+        "url": "https://www.visityakima.com/events/54033-HalloWine:-Trick-or-Treat…-if-you-dare!-at-Freehand-Cellars/",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "Thanksgiving in Wine Country: Brie, Bites & Bottles",
+        "schedule": "Nov 27-29, 2026",
+        "description": "Mini bries topped and paired with a different wine each, plus live music on Saturday.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54034-Thanksgiving-in-Wine-Country:-Brie,-Bites-&-Bottles-at-Freehand-Cellars/",
+        "date": "2026-11-27",
+        "endDate": "2026-11-29"
       }
     ],
     "city": "Wapato"
@@ -1711,12 +1741,12 @@ const VENUES = [
         "url": "https://gilbertcellars.com/"
       },
       {
-        "name": "History Happy Hour Book Talk: The Last Emperor of Mexico",
-        "schedule": "Thu, Oct 8, 2026",
-        "description": "The Yakima-Morelia Sister City Association and Yakima Valley Libraries present the story of Maximilian and Carlota. Free library card signups on site.",
+        "name": "Mojo Studio: MO Halloween Dance with Carolyn",
+        "schedule": "Sat, Oct 31, 2026, 10-10:50 AM",
+        "description": "Final Saturday of the Mojo Studio movement series in the tasting room, Halloween edition.",
         "days": [],
-        "url": "https://www.visityakima.com/events/53780--History-Happy-Hour-Book-Talk:-The-Last-Emperor-of-Mexico",
-        "date": "2026-10-08"
+        "url": "https://www.visityakima.com/events/53813-Mojo-Studio-Presents-MO-Halloween-Dance-with-Carolyn-at-Gilbert-Cellars-Winery/",
+        "date": "2026-10-31"
       }
     ],
     "city": "Yakima"
@@ -1797,7 +1827,25 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Tuesday-Wednesday by appointment only. Large lawn and gazebo with Mt. Adams views; guided tastings indoors or on the lawn.",
-    "events": [],
+    "events": [
+      {
+        "name": "Halloween Ride",
+        "schedule": "Sat, Oct 31, 2026",
+        "description": "Back Country Horsemen of Washington annual Halloween ride, with a costume contest, Fred's Burgers, and case specials on Roza Ridge and library wines.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53995-Halloween-Ride-at-Hyatt-Vineyards/",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "Thanksgiving in Wine Country",
+        "schedule": "Nov 27-30, 2026",
+        "description": "Holiday weekend in the Rattlesnake Hills with a bowl of chili alongside your tasting.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54124-Thanksgiving-in-Wine-Country-at-Hyatt-Vineyards/",
+        "date": "2026-11-27",
+        "endDate": "2026-11-30"
+      }
+    ],
     "city": "Zillah"
   },
   {
@@ -1920,13 +1968,37 @@ const VENUES = [
         "url": "https://kanawinery.com/live-music"
       },
       {
-        "name": "Catch the Crush",
-        "schedule": "Oct 9-11, 2026",
-        "description": "Harvest weekend featuring the new Stone Tree Vineyard Tempranillo Reserve, with 10% off six bottles and 20% off twelve or more.",
+        "name": "Halloween Night Party",
+        "schedule": "Sat, Oct 31, 2026, 7-10 PM",
+        "description": "Halloween-themed live music from The Rod Giles Band, with an 8 PM costume contest.",
         "days": [],
-        "url": "https://www.visityakima.com/events/53855-Catch-the-Crush-at-Kana-Winery",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
+        "url": "https://www.visityakima.com/events/53928-Halloween-Party-at-Kana-Winery/",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "The Ron Mears Trio",
+        "schedule": "Sat, Nov 7, 2026, 7-10 PM",
+        "description": "Ron Mears' three-piece rock and country band on the Kana stage.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53929-THE-RON-MEARS-TRIO-at-Kana-Winery/",
+        "date": "2026-11-07"
+      },
+      {
+        "name": "Jen Howard Live",
+        "schedule": "Sat, Nov 14, 2026, 7 PM",
+        "description": "Singer-songwriter and multi-instrumentalist Jen Howard, blending folk, roots, and reggae.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53800-JEN-HOWARD-LIVE-at-Kana-Winery/",
+        "date": "2026-11-14"
+      },
+      {
+        "name": "Thanksgiving Weekend",
+        "schedule": "Nov 27-29, 2026",
+        "description": "Rotating half-case and case specials, open mic Friday 5-9 PM, and Le Vigneron live Saturday 7-10 PM.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54030-Thanksgiving-Weekend-at-Kana-Winery/",
+        "date": "2026-11-27",
+        "endDate": "2026-11-29"
       }
     ],
     "city": "Yakima"
@@ -2091,7 +2163,25 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Seasonal: open Valentine's weekend through Thanksgiving, Thu-Mon; complimentary tastings. Historic 1905 Angel Farmstead at Parker Heights. Contact by phone/email (its Facebook page was compromised).",
-    "events": [],
+    "events": [
+      {
+        "name": "HalloWine",
+        "schedule": "Sat, Oct 31, 2026",
+        "description": "Special pricing and free tastes of the Late Harvest and Winter Harvest wines, plus 15% off in costume.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54025-HalloWine-at-Masset-Winery/",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "Wine Club Release Weekend",
+        "schedule": "Nov 27-29, 2026",
+        "description": "New releases and a limited run of library wines on the last regular tasting weekend of the season.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54026-Wine-Club-Release-Weekend-at-Masset-Winery/",
+        "date": "2026-11-27",
+        "endDate": "2026-11-29"
+      }
+    ],
     "city": "Wapato"
   },
   {
@@ -2170,7 +2260,16 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Estate winery south of Union Gap; website posts open daily 11-5, walk-ins welcome, but some listings show fewer midweek days - call ahead Tue-Thu. Groups of 8+ should reserve.",
-    "events": [],
+    "events": [
+      {
+        "name": "'Sinister' Halloween Party",
+        "schedule": "Sat, Oct 31, 2026, 12-4 PM",
+        "description": "Free tastings for anyone in costume, a mini craft fair on the lawn, food, and one-day pricing on Sinister Hand magnums.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53735-‘Sinister’-Halloween-Party-at-Owen-Roe-Estate-/",
+        "date": "2026-10-31"
+      }
+    ],
     "city": "Wapato"
   },
   {
@@ -2227,7 +2326,25 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Open daily 11-6; no tasting fees. Organic, zero-pesticide vineyard; quirky, family-friendly tasting with food pairings.",
-    "events": [],
+    "events": [
+      {
+        "name": "Hallowine & BCHW Winery Ride",
+        "schedule": "Sat, Oct 31, 2026",
+        "description": "The Back Country Horsemen of Washington 25th annual winery ride passes through the Rattlesnake Hills, with a Halloween costume contest.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54069-Hallowine-at-Paradisos-del-Sol-Winery-and-Organic-Vineyard/",
+        "date": "2026-10-31"
+      },
+      {
+        "name": "Thanksgiving in Wine Country",
+        "schedule": "Nov 27-29, 2026, 11 AM-6 PM",
+        "description": "Retro open-house weekend with no tasting fees, in the old Yakima Valley tradition.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/54070-Thanksgiving-in-Wine-Country-at-Paradisos-del-Sol-Winery-and-Organic-Vineyard/",
+        "date": "2026-11-27",
+        "endDate": "2026-11-29"
+      }
+    ],
     "city": "Zillah"
   },
   {
@@ -2321,7 +2438,16 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Boutique family winery with tasting room in downtown Selah; fruit from their Equus Vineyard in Moxee.",
-    "events": [],
+    "events": [
+      {
+        "name": "Haunted Forest Paint and Sip (21+)",
+        "schedule": "Fri, Oct 30, 2026",
+        "description": "Step-by-step haunted forest painting with Happily Painted; no experience needed.",
+        "days": [],
+        "url": "https://www.visityakima.com/events/53754-Happily-Painted-Haunted-Forest-Paint-and-Sip-Ages-21+-at-Rider-Cellars/",
+        "date": "2026-10-30"
+      }
+    ],
     "city": "Selah"
   },
   {
@@ -2506,17 +2632,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "OPEN daily 10:30am-5pm through Oct 31, the last posted 2026 window; closed for winter after Nov 1. Check Facebook before visiting.",
-    "events": [
-      {
-        "name": "Catch the Crush: Taste the New Wines of 2026",
-        "schedule": "Oct 9-11, 2026, 10:30 AM-5 PM",
-        "description": "Taste the 2026 vintage as it ferments in the tank, plus fresh grapes straight off the harvest.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/53771-Taste-the-New-Wines-of-2026-as-They-Are-Being-Made-at-Tanjuli-Winery",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -2591,12 +2707,13 @@ const VENUES = [
         "url": "https://www.trevericellars.com/events/"
       },
       {
-        "name": "Catch the Crush: Cellar Tour",
-        "schedule": "Sun, Oct 11, 2026, 11 AM",
-        "description": "Behind-the-scenes tour of the cellar followed by a tasting of Treveri premium sparkling wines.",
+        "name": "Private Bubble Igloos",
+        "schedule": "Oct 15, 2026 - Feb 28, 2027",
+        "description": "Reserved igloo seating with valley views, ice bucket service, and winter sparkling cocktails.",
         "days": [],
-        "url": "https://www.visityakima.com/events/53836-Cellar-Tour-at-Treveri-Cellars",
-        "date": "2026-10-11"
+        "url": "https://www.visityakima.com/events/53822-Cozy-Up-in-Treveri-Cellars'-Private-Bubble-Igloos!-/",
+        "date": "2026-10-15",
+        "endDate": "2027-02-28"
       }
     ],
     "city": "Wapato"
@@ -2656,14 +2773,6 @@ const VENUES = [
     "byAppointment": false,
     "notes": "Second-generation family winery, open daily year-round; casual patio and lawn.",
     "events": [
-      {
-        "name": "2nd Annual Harvest Games + Crush Pad Party",
-        "schedule": "Sat, Oct 10, 2026, 5-10 PM",
-        "description": "Local winemakers compete in harvest games, plus grape stomping and a dance party under the lights on the crush pad.",
-        "days": [],
-        "url": "https://www.twomountainwinery.com/events",
-        "date": "2026-10-10"
-      },
       {
         "name": "Hallowine",
         "schedule": "Sat, Oct 31, 2026, 11 AM-4 PM",
@@ -2729,16 +2838,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Summer hours shown; shorter off-season. On-site Tin Roof Grill food service; large event lawn.",
-    "events": [
-      {
-        "name": "Catch the Crush",
-        "schedule": "Fri, Oct 9, 2026",
-        "description": "Grape stomps, vineyard tours, harvest parties, live music, and food trucks.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/50984-VanArnam-Vineyards-Catch-the-Crush",
-        "date": "2026-10-09"
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -2827,17 +2927,7 @@ const VENUES = [
     },
     "byAppointment": false,
     "notes": "Closed Monday-Tuesday.",
-    "events": [
-      {
-        "name": "Catch the Crush",
-        "schedule": "Oct 9-11, 2026",
-        "description": "Harvest tastings plus the last estate tours before winter - UTV tours through the vineyard or a walking tour near Whitman Pond with a host. Reservations recommended.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/50911-Catch-the-Crush-at-Whitman-Hill-Winery",
-        "date": "2026-10-09",
-        "endDate": "2026-10-11"
-      }
-    ],
+    "events": [],
     "city": "Zillah"
   },
   {
@@ -2876,12 +2966,13 @@ const VENUES = [
     "notes": "Naches Heights AVA estate; Washington's first certified organic, biodynamic and Salmon Safe vineyard/winery; also distills brandy and grappa. Weekdays by appointment.",
     "events": [
       {
-        "name": "Catch the Crush",
-        "schedule": "Sat, Oct 10, 2026, 12-7 PM",
-        "description": "Live music by the Genevieve Band 2-5 PM, wines paired with savory and sweet pies and charcuterie. Kids, leashed dogs, and picnics welcome; no outside alcohol.",
+        "name": "Thanksgiving in Wine Country",
+        "schedule": "Nov 25, 27-29, 2026",
+        "description": "Special flights, Harvest & Holiday cocktails, pies and charcuterie on the heated porch. Closed Thanksgiving Day.",
         "days": [],
-        "url": "https://www.visityakima.com/events/53684-Catch-the-Crush-at-Wilridge-Vineyard,-Winery,-Distillery",
-        "date": "2026-10-10"
+        "url": "https://www.visityakima.com/events/54078-Thanksgiving-in-Wine-Country-at-Wilridge-Vineyard-Winery-and-Distillery/",
+        "date": "2026-11-25",
+        "endDate": "2026-11-29"
       }
     ],
     "city": "Yakima"
@@ -2948,23 +3039,6 @@ const VENUES = [
     "byAppointment": false,
     "notes": "Award-winning teaching winery of Yakima Valley College's Vineyard & Winery Technology Program; tasting room on the Yakima campus. Reservations encouraged.",
     "events": [
-      {
-        "name": "Grape to Glass Tasting Experience",
-        "schedule": "Oct 9-10, 2026, 11 AM and 1 PM",
-        "description": "Seated harvest tasting with food pairings, led by a Yakima Valley College vineyard and winery technology specialist, pouring student-made wines. $40 per person; reservations required.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/53797-Grape-to-Glass-Tasting-Experience-at-Yakima-Valley-Vintners--Yakima-Campus",
-        "date": "2026-10-09",
-        "endDate": "2026-10-10"
-      },
-      {
-        "name": "Improv Night with Huckleberry Pulpo",
-        "schedule": "Fri, Oct 23, 2026, 5-7 PM",
-        "description": "Afterhours evening with live entertainment, award-winning student wines, and sangrias. Kid and pet friendly, no cover charge.",
-        "days": [],
-        "url": "https://www.visityakima.com/events/52534-Improv-Night-with-Huckleberry-Pulpo-at-Yakima-Valley-Vintners--Yakima-Campus",
-        "date": "2026-10-23"
-      },
       {
         "name": "Last Friday Live Music",
         "schedule": "Last Friday of the month, 5-7 PM (Oct 30: JoAnne Carlson)",
